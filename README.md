@@ -1,3 +1,0 @@
-# CoolGame
-Platformer
-Hello
