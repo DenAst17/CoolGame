@@ -764,6 +764,7 @@ GameObject:
   - component: {fileID: 1905835111}
   - component: {fileID: 1905835110}
   - component: {fileID: 1905835113}
+  - component: {fileID: 1905835114}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -782,7 +783,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -790,7 +791,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &1905835111
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1031,6 +1032,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2dd50e0a3f33b42a656890802a43e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lives: 5
+  speed: 3
+  jumpForse: 62
+--- !u!95 &1905835114
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1905835109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f606ad6e62ae9640844f2404d452b53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &2110317158
 Prefab:
   m_ObjectHideFlags: 0
