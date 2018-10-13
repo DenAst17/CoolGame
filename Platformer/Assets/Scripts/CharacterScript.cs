@@ -11,7 +11,13 @@ public class CharacterScript : MonoBehaviour {
     [SerializeField]
     private float jumpForse = 62.0f;
 
-    private bool isGrounded;
+    private bool isGrounded = false;
+
+    private CharState State
+    {
+        get { return (CharState)animator.GetInteger("State"); }
+        set { animator.SetInteger("State", (int)value); }
+    }
 
     new private Rigidbody2D rigidbody;
     private Animator animator;
@@ -31,6 +37,7 @@ public class CharacterScript : MonoBehaviour {
 
     private void Update()
     {
+        if (isGrounded) State = CharState.Idle;
         if (Input.GetButton("Horizontal")) Run();
         if (isGrounded && Input.GetButtonDown("Jump")) Jump();
     }
@@ -40,10 +47,12 @@ public class CharacterScript : MonoBehaviour {
         Vector3 direction = transform.right * Input.GetAxis("Horizontal");
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
         sprite.flipX = direction.x < 0.0f;
+       if(isGrounded) State = CharState.Run;
     }
 
     private void Jump()
     {
+        State = CharState.Jump;
         rigidbody.AddForce(transform.up * jumpForse, ForceMode2D.Impulse);
     }
 
@@ -51,5 +60,13 @@ public class CharacterScript : MonoBehaviour {
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3f);
         isGrounded = colliders.Length > 1;
+        if (!isGrounded) State = CharState.Jump;
     }
+}
+
+public enum CharState
+{
+    Idle,
+    Run,
+    Jump
 }
