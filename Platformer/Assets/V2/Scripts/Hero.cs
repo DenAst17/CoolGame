@@ -14,10 +14,13 @@ public class Hero : MonoBehaviour {
     public int jumps = 0;
     [SerializeField]
     public static int coins = 0;
+    [SerializeField]
+    private Bullet bullet;
 
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sp;
+    SpriteRenderer spb;
     GameObject Spriteheart;
     private void Awake()
     {
@@ -25,10 +28,11 @@ public class Hero : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
         sp = GetComponentInChildren<SpriteRenderer>();
         Spriteheart = GameObject.FindWithTag("Heart");
+        bullet = Resources.Load<Bullet>("Bullet");
     }
     private void Update()
     {
-        if (Input.GetKeyDown (KeyCode.W)) {
+        if (Input.GetKeyDown(KeyCode.W)) {
             if (isGround() == 0)
             {
                 if (jumps < 2)
@@ -76,6 +80,13 @@ public class Hero : MonoBehaviour {
     void Jump()
     {
         rb.AddForce(transform.up * jumpForse, ForceMode2D.Impulse);
+    }
+    private void Shoot()
+    {
+        Vector3 poz = transform.position; poz.y += 0.5f; poz.x += 0.5f;
+        Bullet newbullet = Instantiate(bullet, poz, bullet.transform.rotation);
+        spb = newbullet.GetComponent<SpriteRenderer>();
+        spb.flipX = sp.flipX;
     }
     private int isGround()
     {

@@ -5,11 +5,11 @@ using UnityEngine;
 public class Coin : MonoBehaviour {
 
     [SerializeField]
-    private int cost = 5;
+    public static int cost = 5;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Yes");
-        if (collision.gameObject.GetComponent<Hero>())
+        
+        if (collision.gameObject.tag == "player")
         {
             Hero.coins += cost;
             GameObject.Destroy(this);

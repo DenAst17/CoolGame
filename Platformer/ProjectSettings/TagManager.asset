@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Solid
   - Heart
+  - player
   layers:
   - Default
   - TransparentFX
