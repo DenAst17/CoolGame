@@ -6,13 +6,13 @@ public class Coin : MonoBehaviour {
 
     [SerializeField]
     public static int cost = 5;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if (collision.gameObject.tag == "player")
         {
-            Hero.coins += cost;
-            GameObject.Destroy(this);
+            Hero.coins += cost*Hero.CoinsBoost;
+            Destroy(this.gameObject);
         }
     }
 }

@@ -7,7 +7,7 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public float heart = 100;
     [SerializeField]
-    public float speed = 14.0f;
+    public float speed = 300.0f;
     [SerializeField]
     public float jumpForse = 30.0f;
     [SerializeField]
@@ -15,23 +15,28 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static int coins = 0;
     [SerializeField]
-    private Bullet bullet;
-
+    private GameObject bullet;
+    [SerializeField]
+    public static int CoinsBoost = 1;
+    public static bool dir;
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sp;
     SpriteRenderer spb;
-    GameObject Spriteheart;
+    //GameObject Spriteheart;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         sp = GetComponentInChildren<SpriteRenderer>();
-        Spriteheart = GameObject.FindWithTag("Heart");
-        bullet = Resources.Load<Bullet>("Bullet");
+        //Spriteheart = GameObject.FindWithTag("Heart");
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Shoot();
+        }
         if (Input.GetKeyDown(KeyCode.W)) {
             if (isGround() == 0)
             {
@@ -75,7 +80,7 @@ public class Hero : MonoBehaviour {
     }
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, rb.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed * Time.deltaTime, rb.velocity.y);
     }
     void Jump()
     {
@@ -84,14 +89,23 @@ public class Hero : MonoBehaviour {
     private void Shoot()
     {
         Vector3 poz = transform.position; poz.y += 0.5f; poz.x += 0.5f;
-        Bullet newbullet = Instantiate(bullet, poz, bullet.transform.rotation);
-        spb = newbullet.GetComponent<SpriteRenderer>();
-        spb.flipX = sp.flipX;
+        GameObject bul = Instantiate(bullet, poz, bullet.transform.rotation);
+        Bullet.ji = true;
     }
     private int isGround()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.3f);
-        if (colliders.Length > 1)
+        int j = 0;
+        Vector2 kol = transform.position; kol.x += 0.05f; kol.y += -0.1f;
+        Vector2 dol; dol.x = 0.7f; dol.y = 0.2f;
+        Collider2D[] colliders = Physics2D.OverlapCapsuleAll(kol, dol, CapsuleDirection2D.Horizontal, 0);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject.tag == "Solid")
+            {
+                j++;
+            }
+        }
+        if (j > 0)
         {
             return 1;
         }
