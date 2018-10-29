@@ -720,8 +720,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 212880663051107490, guid: 63e001d4c36ca5b4788acc705d72712e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 246501931fc17e94ca74c88a0930d8f7,
+        type: 3}
+    - target: {fileID: 1663949907650888, guid: 63e001d4c36ca5b4788acc705d72712e, type: 2}
+      propertyPath: m_TagString
+      value: bullet
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114118984685641928, guid: 63e001d4c36ca5b4788acc705d72712e, type: 2}
+    - {fileID: 60528512177108176, guid: 63e001d4c36ca5b4788acc705d72712e, type: 2}
+    - {fileID: 95889869653723980, guid: 63e001d4c36ca5b4788acc705d72712e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 63e001d4c36ca5b4788acc705d72712e, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1521293694 stripped
@@ -924,6 +936,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5170f9d7e1877841ba41a5d9c96e0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &1919396704
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1919396702}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.35625
 --- !u!50 &1919396708
 Rigidbody2D:
   serializedVersion: 4
@@ -939,11 +966,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 716beefc9b0688d46905eb22885336b1, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 0
 --- !u!4 &1951328831 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4131289720261358, guid: c940faffc51be534988295b24b89b726,
@@ -1031,7 +1058,7 @@ MonoBehaviour:
   speed: 300
   jumpForse: 70
   jumps: 0
-  bullet: {fileID: 1919396702}
+  bullet: {fileID: 1919396708}
 --- !u!1001 &2073470210
 Prefab:
   m_ObjectHideFlags: 0

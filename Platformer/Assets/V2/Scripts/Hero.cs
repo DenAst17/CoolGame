@@ -15,25 +15,26 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static int coins = 0;
     [SerializeField]
-    private GameObject bullet;
+    private Rigidbody2D bullet;
     [SerializeField]
     public static int CoinsBoost = 1;
-    public static bool dir;
+    [SerializeField]
+    public static float bulletspeed = 20f;
+    [SerializeField]
+    public static int bullets = 30; 
+
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sp;
-    SpriteRenderer spb;
-    //GameObject Spriteheart;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         sp = GetComponentInChildren<SpriteRenderer>();
-        //Spriteheart = GameObject.FindWithTag("Heart");
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && bullets > 0)
         {
             Shoot();
         }
@@ -88,9 +89,10 @@ public class Hero : MonoBehaviour {
     }
     private void Shoot()
     {
-        Vector3 poz = transform.position; poz.y += 0.5f; poz.x += 0.5f;
-        GameObject bul = Instantiate(bullet, poz, bullet.transform.rotation);
-        Bullet.ji = true;
+        Vector3 poz = transform.position; poz.y += 0.5f; poz.x += sp.flipX ? -0.5f : 0.5f;
+        Rigidbody2D clone = Instantiate(bullet, poz, transform.rotation) as Rigidbody2D;
+        clone.velocity = transform.TransformDirection((sp.flipX ? Vector3.left : Vector3.right) * bulletspeed);
+        bullets--;
     }
     private int isGround()
     {
