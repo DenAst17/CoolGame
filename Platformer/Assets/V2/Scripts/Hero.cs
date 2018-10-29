@@ -21,7 +21,9 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static float bulletspeed = 20f;
     [SerializeField]
-    public static int bullets = 30; 
+    public static int bullets = 30;
+    [SerializeField]
+    public static float timetodestroybullet = 30;
 
     Rigidbody2D rb;
     Animator anim;
@@ -102,7 +104,7 @@ public class Hero : MonoBehaviour {
         Collider2D[] colliders = Physics2D.OverlapCapsuleAll(kol, dol, CapsuleDirection2D.Horizontal, 0);
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].gameObject.tag == "Solid")
+            if (colliders[i].gameObject.tag == "Solid" || colliders[i].gameObject.tag == "bullet")
             {
                 j++;
             }
