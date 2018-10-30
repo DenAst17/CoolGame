@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour {
     [SerializeField]
-    public float heart = 100;
+    public static float heart = 100f;
     [SerializeField]
     public float speed = 300.0f;
+    [SerializeField]
+    public static float angle = 0f;
     public float jumpForse = 30.0f;
     public int jumps = 0;
     [SerializeField]
@@ -30,7 +32,7 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0) && bullets > 0)
+        if (Input.GetKeyDown(KeyCode.E) && bullets > 0)
         {
             Shoot();
         }
@@ -85,11 +87,11 @@ public class Hero : MonoBehaviour {
     }
     private void Shoot()
     {
-        Vector3 poz = transform.position; poz.y += 0.5f; poz.x += sp.flipX ? -0.5f : 0.5f;
+        Vector3 poz = transform.position; poz.y += 0.7f; poz.x += sp.flipX ? -0.5f : 0.7f;
         Rigidbody2D clone = Instantiate(bullet, poz, transform.rotation) as Rigidbody2D;
-        clone.velocity = transform.TransformDirection((sp.flipX ? Vector3.left : Vector3.right) * bulletspeed);
+        Vector3 v = new Vector3((float)Math.Cos((angle/180.0f)*Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
+        clone.velocity = transform.TransformDirection(v*bulletspeed);
         bullets--;
-        Debug.Log("Holo");
     }
     private int isGround()
     {
