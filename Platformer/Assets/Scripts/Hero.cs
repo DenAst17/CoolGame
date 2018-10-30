@@ -32,8 +32,33 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
+        Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (transform.position.y + 0.7f < m.y)
+        {
+            if (m.x < transform.position.x + 0.5 && m.x > transform.position.x - 0.5)
+            {
+                angle = 90;
+            }
+            else if(m.x > transform.position.x + 0.5)
+            {
+                angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x + 0.5) - m.x)));
+            }
+            else if (m.x < transform.position.x - 0.5)
+            {
+                angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x - 0.5) - m.x)));
+            }
+        }
+        else
+        {
+            angle = 0;
+        }
         if (Input.GetKeyDown(KeyCode.E) && bullets > 0)
         {
+            if (m.x < transform.position.x)
+            {
+                sp.flipX = true;
+            }
+            else { sp.flipX = false; }
             Shoot();
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) {
