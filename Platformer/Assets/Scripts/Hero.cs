@@ -8,21 +8,15 @@ public class Hero : MonoBehaviour {
     public float heart = 100;
     [SerializeField]
     public float speed = 300.0f;
-    [SerializeField]
     public float jumpForse = 30.0f;
-    [SerializeField]
     public int jumps = 0;
     [SerializeField]
     public static int coins = 0;
     [SerializeField]
     private Rigidbody2D bullet;
-    [SerializeField]
     public static int CoinsBoost = 1;
-    [SerializeField]
     public static float bulletspeed = 20f;
-    [SerializeField]
     public static int bullets = 30;
-    [SerializeField]
     public static float timetodestroybullet = 30;
 
     Rigidbody2D rb;
@@ -95,6 +89,7 @@ public class Hero : MonoBehaviour {
         Rigidbody2D clone = Instantiate(bullet, poz, transform.rotation) as Rigidbody2D;
         clone.velocity = transform.TransformDirection((sp.flipX ? Vector3.left : Vector3.right) * bulletspeed);
         bullets--;
+        Debug.Log("Holo");
     }
     private int isGround()
     {
