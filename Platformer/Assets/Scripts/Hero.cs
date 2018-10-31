@@ -15,7 +15,12 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static int coins = 0;
     [SerializeField]
-    private Rigidbody2D bullet;
+    private Rigidbody2D bulletblue;
+    [SerializeField]
+    private Rigidbody2D bulletgreen;
+    [SerializeField]
+    private Rigidbody2D bulletred;
+    public static string colorbutton = "blue";
     public static int CoinsBoost = 1;
     public static float bulletspeed = 20f;
     public static int bullets = 30;
@@ -113,10 +118,27 @@ public class Hero : MonoBehaviour {
     private void Shoot()
     {
         Vector3 poz = transform.position; poz.y += 0.7f; poz.x += sp.flipX ? -0.5f : 0.7f;
-        Rigidbody2D clone = Instantiate(bullet, poz, transform.rotation) as Rigidbody2D;
-        Vector3 v = new Vector3((float)Math.Cos((angle/180.0f)*Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
-        clone.velocity = transform.TransformDirection(v*bulletspeed);
-        bullets--;
+        if (colorbutton == "blue")
+        {
+            Rigidbody2D clone = Instantiate(bulletblue, poz, transform.rotation) as Rigidbody2D;
+            Vector3 v = new Vector3((float)Math.Cos((angle / 180.0f) * Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
+            clone.velocity = transform.TransformDirection(v * bulletspeed);
+            bullets--;
+        }
+        else if (colorbutton == "green")
+        {
+            Rigidbody2D clone = Instantiate(bulletgreen, poz, transform.rotation) as Rigidbody2D;
+            Vector3 v = new Vector3((float)Math.Cos((angle / 180.0f) * Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
+            clone.velocity = transform.TransformDirection(v * bulletspeed);
+            bullets--;
+        }
+        else
+        {
+            Rigidbody2D clone = Instantiate(bulletred, poz, transform.rotation) as Rigidbody2D;
+            Vector3 v = new Vector3((float)Math.Cos((angle / 180.0f) * Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
+            clone.velocity = transform.TransformDirection(v * bulletspeed);
+            bullets--;
+        }
     }
     private int isGround()
     {

@@ -4,39 +4,37 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ClickBtn : MonoBehaviour {
-    [SerializeField]
-    public Toggle bl;
-    [SerializeField]
-    public Toggle gr;
-    [SerializeField]
-    public Toggle rd;
-
     public void Blue()
     {
-        if (bl.enabled == true)
+        if (gameObject.GetComponent<Toggle>().isOn == true)
         {
-
-            gr.enabled = false;
-            rd.enabled = false;
-            rd.Select();
+            Hero.colorbutton = "blue";
+        }
+        else
+        {
+            
         }
     }
     public void Green()
     {
-        if (gr.enabled == true)
+        if (gameObject.GetComponent<Toggle>().isOn == true)
         {
-
-            rd.enabled = false;
-            bl.enabled = false;
+            Hero.colorbutton = "green";
+        }
+        else
+        {
+            
         }
     }
     public void Red()
     {
-        if (rd.enabled == true)
+        if (gameObject.GetComponent<Toggle>().isOn == true)
         {
-
-            bl.enabled = false;
-            gr.enabled = false;
+            Hero.colorbutton = "red";
+        }
+        else
+        {
+            
         }
     }
 }
