@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletGreen : MonoBehaviour {
-
-	// Use this for initialization
+    public int damage = 10;
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        Destroy(this.gameObject, 60);
+    }
 }

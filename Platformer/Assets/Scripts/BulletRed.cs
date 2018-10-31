@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletRed : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    public int damage = 20;
+    void Start () {
+        Destroy(this.gameObject, 20);
 	}
 }

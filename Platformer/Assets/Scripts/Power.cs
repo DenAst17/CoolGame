@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Coin : MonoBehaviour {
-
+public class Power : MonoBehaviour {
     [SerializeField]
-    public static int cost = 5;
+    public static int t = 10;
+    [SerializeField]
+    public static int power = 50;
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x,transform.position.y+(float)Math.Sin(Time.time*Math.PI*1.5)/-100,transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(Time.time * Math.PI * 1.5) / -100, transform.position.z);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
-            Hero.coins += cost*Hero.CoinsBoost;
+            Hero.Power(t,power);
             Destroy(this.gameObject);
         }
     }

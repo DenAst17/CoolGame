@@ -7,7 +7,7 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static float heart = 100f;
     [SerializeField]
-    public float speed = 300.0f;
+    public static float speed = 300.0f;
     [SerializeField]
     public static float angle = 0f;
     public float jumpForse = 30.0f;
@@ -25,6 +25,7 @@ public class Hero : MonoBehaviour {
     public static float bulletspeed = 20f;
     public static int bullets = 30;
     public static float timetodestroybullet = 30;
+    public static float MaxHP = 100f;
 
     Rigidbody2D rb;
     Animator anim;
@@ -37,28 +38,28 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
-        Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (transform.position.y + 0.7f < m.y)
-        {
-            if (m.x < transform.position.x + 0.5 && m.x > transform.position.x - 0.5)
-            {
-                angle = 90;
-            }
-            else if(m.x > transform.position.x + 0.5)
-            {
-                angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x + 0.5) - m.x)));
-            }
-            else if (m.x < transform.position.x - 0.5)
-            {
-                angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x - 0.5) - m.x)));
-            }
-        }
-        else
-        {
-            angle = 0;
-        }
         if (Input.GetKeyDown(KeyCode.E) && bullets > 0)
         {
+            Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (transform.position.y + 0.7f < m.y)
+            {
+                if (m.x < transform.position.x + 0.5 && m.x > transform.position.x - 0.5)
+                {
+                    angle = 90;
+                }
+                else if (m.x > transform.position.x + 0.5)
+                {
+                    angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x + 0.5) - m.x)));
+                }
+                else if (m.x < transform.position.x - 0.5)
+                {
+                    angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x - 0.5) - m.x)));
+                }
+            }
+            else
+            {
+                angle = 0;
+            }
             if (m.x < transform.position.x)
             {
                 sp.flipX = true;
@@ -106,6 +107,16 @@ public class Hero : MonoBehaviour {
         {
             anim.SetInteger("State", 3);
         }
+        if (lop)
+        {
+            promtime -= Time.deltaTime;
+            if (promtime <= 0)
+            {
+                promtime = 0;
+                speed -= prom;
+                lop = false;
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -139,6 +150,16 @@ public class Hero : MonoBehaviour {
             clone.velocity = transform.TransformDirection(v * bulletspeed);
             bullets--;
         }
+    }
+    public static float prom = 0;
+    public static float promtime = 0;
+    public static bool lop = false;
+    public static void Power(int t, int power)
+    {
+        prom = power;
+        promtime = t;
+        lop = true;
+        speed += power;
     }
     private int isGround()
     {

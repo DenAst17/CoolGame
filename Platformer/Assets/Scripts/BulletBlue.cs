@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletBlue : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int damage = 5;
+    void Start () {
+        Destroy(this.gameObject, 40);
+    }
 }
