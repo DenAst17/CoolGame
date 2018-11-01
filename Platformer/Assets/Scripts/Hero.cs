@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour {
-    [SerializeField]
     public static float heart = 100f;
-    [SerializeField]
     public static float speed = 300.0f;
-    [SerializeField]
     public static float angle = 0f;
     public float jumpForse = 30.0f;
     public int jumps = 0;
-    [SerializeField]
     public static int coins = 0;
     [SerializeField]
     private Rigidbody2D bulletblue;
@@ -26,8 +23,11 @@ public class Hero : MonoBehaviour {
     public static int bullets = 30;
     public static float timetodestroybullet = 30;
     public static float MaxHP = 100f;
-
-    Rigidbody2D rb;
+    public bool isdead = false;
+    public static float prom = 0;
+    public static float promtime = 0;
+    public static bool lop = false;
+    public static Rigidbody2D rb;
     Animator anim;
     SpriteRenderer sp;
     private void Awake()
@@ -38,7 +38,7 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && bullets > 0)
+        if (Input.GetKeyDown(KeyCode.E) && bullets > 0 && !isdead)
         {
             Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (transform.position.y + 0.7f < m.y)
@@ -67,7 +67,7 @@ public class Hero : MonoBehaviour {
             else { sp.flipX = false; }
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) && !isdead) {
             if (isGround() == 0)
             {
                 if (jumps < 2)
@@ -83,11 +83,11 @@ public class Hero : MonoBehaviour {
                 jumps++;
             }
         }
-        if (Input.GetAxis("Horizontal") == 0)
+        if (Input.GetAxis("Horizontal") == 0 && !isdead)
         {
             anim.SetInteger("State", 0);
         }
-        else
+        else if (!isdead)
         {
             if (Input.GetAxis("Horizontal") < 0)
             {
@@ -99,11 +99,11 @@ public class Hero : MonoBehaviour {
             }
             anim.SetInteger("State", 1);
         }
-        if (rb.velocity.y > 0.2)
+        if (rb.velocity.y > 0.2 && !isdead)
         {
             anim.SetInteger("State", 2);
         }
-        else if (rb.velocity.y < -0.2)
+        else if (rb.velocity.y < -0.2 && !isdead)
         {
             anim.SetInteger("State", 3);
         }
@@ -151,15 +151,16 @@ public class Hero : MonoBehaviour {
             bullets--;
         }
     }
-    public static float prom = 0;
-    public static float promtime = 0;
-    public static bool lop = false;
     public static void Power(int t, int power)
     {
         prom = power;
         promtime = t;
         lop = true;
         speed += power;
+    }
+    public static void takedamage(float imp)
+    {
+        rb.AddForce(Vector3.up * imp, ForceMode2D.Impulse);
     }
     private int isGround()
     {
@@ -182,5 +183,9 @@ public class Hero : MonoBehaviour {
         {
             return 0;
         }
+    }
+    public void Dead()
+    {
+        SceneManager.LoadScene(0);
     }
 }
