@@ -68,7 +68,7 @@ public class Hero : MonoBehaviour {
             Shoot();
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) && !isdead) {
-            if (isGround() == 0)
+            if (isGround() == true)
             {
                 if (jumps < 2)
                 {
@@ -99,11 +99,11 @@ public class Hero : MonoBehaviour {
             }
             anim.SetInteger("State", 1);
         }
-        if (rb.velocity.y > 0.2 && !isdead)
+        if (rb.velocity.y > 0 && !isdead && isGround() == true)
         {
             anim.SetInteger("State", 2);
         }
-        else if (rb.velocity.y < -0.2 && !isdead)
+        else if (rb.velocity.y < 0 && !isdead && isGround() == true)
         {
             anim.SetInteger("State", 3);
         }
@@ -162,7 +162,7 @@ public class Hero : MonoBehaviour {
     {
         rb.AddForce(Vector3.up * imp, ForceMode2D.Impulse);
     }
-    private int isGround()
+    private bool isGround()
     {
         int j = 0;
         Vector2 kol = transform.position; kol.x += 0.05f; kol.y += -0.1f;
@@ -177,11 +177,11 @@ public class Hero : MonoBehaviour {
         }
         if (j > 0)
         {
-            return 1;
+            return false;
         }
         else
         {
-            return 0;
+            return true;
         }
     }
     public void Dead()
