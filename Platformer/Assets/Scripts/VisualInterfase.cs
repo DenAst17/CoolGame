@@ -24,13 +24,13 @@ public class VisualInterfase : MonoBehaviour {
     private Text bulletspeed;
     private void Update()
     {
-        HPtext.text = "Health " + Convert.ToString((100 * Hero.heart) / Hero.MaxHP) + "%";
+        HPtext.text = "Health " + Convert.ToString(Hero.heart) + "% ";
         bulletspeed.text = Convert.ToString(Hero.bulletspeed) + " - bulletspeed";
         colorbutton.text = Hero.colorbutton + " - colorbutton";
         angle.text = Convert.ToString(Hero.angle) + " - angle";
         speed.text = Convert.ToString(Hero.speed) + " - speed";
         moneys.text = Convert.ToString(Hero.coins);
         Bullets.text = Convert.ToString(Hero.bullets);
-        HP.transform.localScale = new Vector3((4f/100f)*Hero.heart,0.3f,1f);
+        HP.transform.localScale = new Vector3(Hero.heart,0.3f,1f);
     }
 }
