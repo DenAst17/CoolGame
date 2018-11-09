@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class StartMenuButtons : MonoBehaviour {
-
     public void ButtonStart()
     {
         SceneManager.LoadScene(1);
