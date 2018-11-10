@@ -2,24 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VisualLevelMenu : MonoBehaviour {
-    [SerializeField]
-    public Button[] buttons;
-    public bool[] btns = new bool[16];
-    private void Strart()
-    {
-    }
-    public static void update()
-    {
-        for (int i = 0; i < 16; i++)
-        {
-
-        }
-    }
     public void BacktoMenu()
     {
-
+        SceneManager.LoadScene(1);
     }
     public void Save()
     {
@@ -31,6 +19,6 @@ public class VisualLevelMenu : MonoBehaviour {
     }
     public void Contact()
     {
-
+        SceneManager.LoadScene(0);
     }
 }

@@ -67,6 +67,7 @@ public class Hero : MonoBehaviour {
             else { sp.flipX = false; }
             Shoot();
         }
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) && !isdead) {
             if (isGround() == true)
             {
