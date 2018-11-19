@@ -12,8 +12,7 @@ public class Lvlmenubtns : MonoBehaviour {
     [SerializeField]
     public Scene[] scenes = new Scene[16];
     int h = 1;
-    Button io;
-    void Start () {
+    Button io;    void Start () {
         lvlsop[0] = true;
         for (int i = 1; i < 16; i++)
         {
