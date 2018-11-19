@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 118450039}
   - component: {fileID: 118450038}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -543,7 +543,7 @@ RectTransform:
   m_Children:
   - {fileID: 1158724561}
   m_Father: {fileID: 1803534357}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -647,7 +647,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5a08563670686469d7c757fbe7f831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
 --- !u!1 &301075851
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +809,7 @@ GameObject:
   - component: {fileID: 480696032}
   - component: {fileID: 480696031}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: Button (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1044,7 +1043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5a08563670686469d7c757fbe7f831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
 --- !u!1 &579698549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,7 +1513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5a08563670686469d7c757fbe7f831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
 --- !u!1 &721204620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1525,7 @@ GameObject:
   - component: {fileID: 721204623}
   - component: {fileID: 721204622}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1748,6 +1745,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843013197}
+  - component: {fileID: 843013198}
   - component: {fileID: 843013196}
   m_Layer: 0
   m_Name: Visual
@@ -1764,26 +1762,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 843013195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5a08563670686469d7c757fbe7f831, type: 3}
+  m_Script: {fileID: 11500000, guid: 4379e249ff458e24b8ceafeac132881b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
+  btns:
   - {fileID: 953702236}
   - {fileID: 2140252243}
   - {fileID: 649772698}
   - {fileID: 590638272}
-  - {fileID: 579698551}
-  - {fileID: 1781893428}
   - {fileID: 1955080943}
+  - {fileID: 579698551}
   - {fileID: 1467695702}
-  - {fileID: 725040441}
-  - {fileID: 1205869428}
+  - {fileID: 1781893428}
   - {fileID: 1923297373}
+  - {fileID: 725040441}
   - {fileID: 1194227918}
-  - {fileID: 721204622}
-  - {fileID: 480696031}
+  - {fileID: 1205869428}
   - {fileID: 1810931734}
+  - {fileID: 721204622}
   - {fileID: 118450038}
+  - {fileID: 480696031}
 --- !u!4 &843013197
 Transform:
   m_ObjectHideFlags: 0
@@ -1797,6 +1795,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843013198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 843013195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5a08563670686469d7c757fbe7f831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &953702234
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe5a08563670686469d7c757fbe7f831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
 --- !u!1 &1152448104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2317,7 @@ RectTransform:
   - {fileID: 649772697}
   - {fileID: 590638271}
   m_Father: {fileID: 1803534357}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -3715,8 +3723,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1240501098}
-  - {fileID: 1152448105}
   - {fileID: 289318548}
+  - {fileID: 1152448105}
   - {fileID: 1304442789}
   - {fileID: 1060231150}
   - {fileID: 994587650}
@@ -3743,7 +3751,7 @@ GameObject:
   - component: {fileID: 1810931735}
   - component: {fileID: 1810931734}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
