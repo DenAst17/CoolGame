@@ -5,11 +5,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour {
+    [SerializeField]
     public static float heart = 100f;
+    [SerializeField]
     public static float speed = 300.0f;
+    [SerializeField]
     public static float angle = 0f;
+    [SerializeField]
     public float jumpForse = 30.0f;
+    [SerializeField]
     public int jumps = 0;
+    [SerializeField]
     public static int coins = 0;
     [SerializeField]
     private Rigidbody2D bulletblue;
@@ -17,15 +23,25 @@ public class Hero : MonoBehaviour {
     private Rigidbody2D bulletgreen;
     [SerializeField]
     private Rigidbody2D bulletred;
+    [SerializeField]
     public static string colorbutton = "blue";
+    [SerializeField]
     public static int CoinsBoost = 1;
+    [SerializeField]
     public static float bulletspeed = 20f;
+    [SerializeField]
     public static int bullets = 30;
+    [SerializeField]
     public static float timetodestroybullet = 30;
+    [SerializeField]
     public static float MaxHP = 100f;
+    [SerializeField]
     public bool isdead = false;
+    [SerializeField]
     public static float prom = 0;
+    [SerializeField]
     public static float promtime = 0;
+    [SerializeField]
     public static bool lop = false;
     public static Rigidbody2D rb;
     Animator anim;

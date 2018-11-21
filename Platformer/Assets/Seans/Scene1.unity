@@ -786,6 +786,13 @@ MonoBehaviour:
   difficulty: 1
   levellensth: 70
   level: 1
+  StartPoz: {fileID: 1961212508}
+  n: 70
+  m: 20
+  xmas: 0
+  ymas: 0
+  xpl: 0
+  ypl: 0
 --- !u!4 &1663237585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4874750293832956, guid: e1b8efe311ab54e4d9c8d1a4bd69854b,
