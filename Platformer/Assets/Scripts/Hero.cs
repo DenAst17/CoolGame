@@ -54,6 +54,10 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings);
+        }
         if (Input.GetKeyDown(KeyCode.E) && bullets > 0 && !isdead)
         {
             Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -84,7 +88,7 @@ public class Hero : MonoBehaviour {
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) && !isdead) {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && !isdead) {
             if (isGround() == true)
             {
                 if (jumps < 2)
@@ -200,9 +204,5 @@ public class Hero : MonoBehaviour {
         {
             return true;
         }
-    }
-    public void Dead()
-    {
-        SceneManager.LoadScene(0);
     }
 }

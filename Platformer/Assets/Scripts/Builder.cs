@@ -10,9 +10,9 @@ public class Builder : MonoBehaviour {
     [SerializeField]
     int level = 1;
     [SerializeField]
-    public int n = 70;
+    public int n = 40;
     [SerializeField]
-    public int m = 20;
+    public int m = 10;
     [SerializeField]
     public int xmas = 0;
     [SerializeField]
@@ -20,9 +20,9 @@ public class Builder : MonoBehaviour {
     public float xpl = 0;
     public float ypl = 0;
     [SerializeField]
-    public int[,] vs;
+    public int[,] vs = new int[42,22];
     [SerializeField]
-    public float[,,] cor;
+    public float[,,] cor = new float[40,20,2];
     public GameObject StartPoz;
     private GameObject block_middle;
     private GameObject block_Left;
@@ -33,9 +33,7 @@ public class Builder : MonoBehaviour {
     private GameObject block_Right_Up;
     private GameObject block_Down;
     private GameObject block_Up;
-    private GameObject Platform_Left;
-    private GameObject Platform_Middle;
-    private GameObject Platform_Right;
+    private GameObject Platform_3;
     private GameObject block_Left_to_Up1;
     private GameObject block_Left_to_Up2;
     private GameObject block_Right_to_Up1;
@@ -47,9 +45,9 @@ public class Builder : MonoBehaviour {
         block_Right = GameObject.Find("Main/SBlock_R");//3
         block_Down = GameObject.Find("Main/SBlock_D");//4
         block_Up = GameObject.Find("Main/SBlock_M_Up");//5
-        Platform_Left = GameObject.Find("Main/Platform_L");//6
-        Platform_Middle = GameObject.Find("Main/Platform_M");//7
-        Platform_Right = GameObject.Find("Main/Platform_R");//8
+        Platform_3 = GameObject.Find("Main/Platform_L");//6
+        //Platform_Middle = GameObject.Find("Main/Platform_M");//7
+        //Platform_Right = GameObject.Find("Main/Platform_R");//8
         block_Left_Down = GameObject.Find("Main/SBlock_L_D");//9
         block_Left_Up = GameObject.Find("Main/SBlock_L_Up");//10
         block_Right_Down = GameObject.Find("Main/SBlock_R_D");//11
@@ -70,96 +68,93 @@ public class Builder : MonoBehaviour {
                 LevelvsSummer();
                 break;
         }
-        /*
-         Create massive
-        */
+        //Create massive
+        for (int i = 0; i < 42; i++)
+        {
+            for (int j = 0; j < 22; j++)
+            {
+                vs[i, j] = 0;
+            }
+        }
+        vs[8, 2] = 100;
+        for (int i = 4; i < 12; i++)
+        {
+            for (int j = 3; j < 9; j++)
+            {
+                vs[i, j] = 1;
+            }
+        }
         //Create symbols
+        for (int i = 1; i < n - 1; i++)
+        {
+            for (int j = 1; j < (2 * m) - 1; j++)
+            {
+                if (vs[i, j] == 100)
+                {
+                    ymas = j - 1;
+                    xmas = i - 1;
+                    vs[i, j] = 0;
+                }
+            }
+        }
         for (int i = 1; i < n-1; i++)
         {
-            for (int j = 1; j < 2*m; j++)
+            for (int j = 1; j < (2*m)-1; j++)
             {
-                if (vs[i, j] != 0)
-                {
                     if (vs[i, j] == 20)
                     {
-                        if (vs[i - 1, j] == 0)
-                        {//                                    |            |            |            @           @|               |@         
-                            vs[i, j] = 6;//                   @|--        --|--        --|@         --|--        --|--           --|--                                
-                        }//                                    |            @            |            |            |               |              
-                        else if (vs[i + 1, j] == 0)//      (x-1 , y) && (x , y-1) && (x+1 , y) && (x , y+1) && (x-1 , y-1) && (x+1 , y-1)
+                        if (vs[i, j] != 0)
                         {
-                            vs[i, j] = 8;
-                        }
-                        else
-                        {
-                            vs[i, j] = 7;
+                            vs[i, j] = 6;                           
                         }
                     }
                     else if (vs[i, j] == 1)
                     {
-                        if (vs[i - 1, j] == 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] == 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
+                        if (vs[i - 1, j] == 0)
                         {
-                            vs[i, j] = 10;
+                            if (vs[i, j - 1] == 0)
+                            {
+                                vs[i, j] = 10;
+                            }
+                            else if (vs[i - 1, j] == 0 && vs[i, j - 1] != 0 && vs[i, j+1] == 0)
+                            {
+                                vs[i, j] = 9;
+                            }
+                            else
+                            {
+                                vs[i, j] = 2;
+                            }
                         }
-                        else if (vs[i - 1, j] == 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] != 0/*6*/)
+                        else
                         {
-                            vs[i, j] = 2;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] != 0/*6*/)
-                        {
-                            vs[i, j] = 14;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] != 0/*5*/ && vs[i + 1, j - 1] != 0/*6*/)
-                        {
-                            vs[i, j] = 1;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] == 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] != 0/*6*/)
-                        {
-                            vs[i, j] = 13;
-                        }
-                        else if (vs[i - 1, j] == 0/*1*/ && vs[i, j - 1] == 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] == 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 10;
-                        }
-                        else if (vs[i - 1, j] == 0/*1*/ && vs[i, j - 1] == 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] != 0/*6*/)
-                        {
-                            vs[i, j] = 9;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] == 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] != 0/*5*/ && vs[i + 1, j - 1] != 0/*6*/)
-                        {
-                            vs[i, j] = 4;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] == 0/*2*/ && vs[i + 1, j] == 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] != 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 11;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] == 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] != 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 3;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] == 0/*3*/ && vs[i, j + 1] == 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 12;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] == 0/*4*/ && vs[i - 1, j - 1] != 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 15;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] != 0/*4*/ && vs[i - 1, j - 1] != 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 16;
-                        }
-                        else if (vs[i - 1, j] != 0/*1*/ && vs[i, j - 1] != 0/*2*/ && vs[i + 1, j] != 0/*3*/ && vs[i, j + 1] == 0/*4*/ && vs[i - 1, j - 1] == 0/*5*/ && vs[i + 1, j - 1] == 0/*6*/)
-                        {
-                            vs[i, j] = 5;
+                            if (vs[i, j + 1] == 0)
+                            {
+                                if (vs[i + 1, j] == 0)
+                                {
+                                    vs[i, j] = 11;
+                                }
+                                else
+                                {
+                                    vs[i, j] = 4;
+                                }
+                            }
+                            else if (vs[i + 1, j] == 0)
+                            {
+                                if (vs[i, j - 1] == 0)
+                                {
+                                    vs[i, j] = 12;
+                                }
+                                else
+                                {
+                                    vs[i, j] = 3;
+                                }
+                            }
+                            else
+                            {
+                                vs[i, j] = 1;
+                            }
                         }
                     }
-                }
-                else if (vs[i, j] == 100)
-                {
-                    ymas = j-1;
-                    xmas = i-1;
-                }
             }
         }
         cor[xmas, ymas, 0] = StartPoz.transform.position.x;
@@ -214,9 +209,9 @@ public class Builder : MonoBehaviour {
             ypl--;
         }ypl = 0; xpl = 0;
         //Create
-        for (int i = 0; i < 2*m; i++)
+        for (int i = 0; i < n-1; i++)
         {
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < m*2-1; j++)
             {
                 if (vs[i,j] != 0)
                 {
@@ -240,18 +235,18 @@ public class Builder : MonoBehaviour {
                     {
                         Instantiate(block_Up, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
                     }
-                    else if (vs[i, j] == 6)
+                    else if (vs[i, j] == 6 && vs[i, j-1] == 6 && vs[i, j+1] == 6)
                     {
-                        Instantiate(Platform_Left, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
+                        Instantiate(Platform_3, new Vector3(cor[i+1, j, 0], cor[i+1, j, 1], 0f), transform.rotation);
                     }
-                    else if (vs[i, j] == 7)
+                    /*else if (vs[i, j] == 7)
                     {
                         Instantiate(Platform_Middle, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
                     }
                     else if (vs[i, j] == 8)
                     {
                         Instantiate(Platform_Right, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
-                    }
+                    }*/
                     else if (vs[i, j] == 9)
                     {
                         Instantiate(block_Left_Down, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);

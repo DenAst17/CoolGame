@@ -7,34 +7,24 @@ public class ClickBtn : MonoBehaviour {
     public void Blue()
     {
         if (gameObject.GetComponent<Toggle>().isOn == true)
-        {
             Hero.colorbutton = "blue";
-        }
-        else
-        {
-            
-        }
     }
     public void Green()
     {
         if (gameObject.GetComponent<Toggle>().isOn == true)
-        {
             Hero.colorbutton = "green";
-        }
-        else
-        {
-            
-        }
     }
     public void Red()
     {
         if (gameObject.GetComponent<Toggle>().isOn == true)
-        {
             Hero.colorbutton = "red";
-        }
-        else
-        {
-            
-        }
+    }
+    public void MoneysPlus()
+    {
+        Hero.coins += 5;
+    }
+    public void BulletsPlus()
+    {
+        Hero.bullets += 5;
     }
 }
