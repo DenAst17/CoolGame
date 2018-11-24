@@ -37,7 +37,7 @@ public class Builder : MonoBehaviour
     private GameObject block_Left_to_Up2;
     private GameObject block_Right_to_Up1;
     private GameObject block_Right_to_Up2;
-#endregion
+    #endregion
     void LevelvsSummer()
     {
         block_middle = GameObject.Find("Main/SBlock_M");//1
@@ -67,11 +67,12 @@ public class Builder : MonoBehaviour
                 LevelvsSummer();
                 break;
         }
-        //Create massive
-        int[,] vs = new int[n + 2, (m * 2) + 2];
+
+        int[,] vs = new int[n + 2, (m * 2) + 2]; //Create massive
         float[,,] cor = new float[n, m * 2, 2];
         #region Denisov Kode
         System.Random rand = new System.Random(); // Randomization of random numbers generator
+
         for (int i = 0; i < n + 2; i++)
             for (int j = 0; j < 2 * m + 2; j++)
                 vs[i, j] = 0;
@@ -84,43 +85,43 @@ public class Builder : MonoBehaviour
                 vs[i, j] = 1; // First ground plate 4x7
 
         vs[7, m - 2] = 100; // Counting from
-
         y_p_ugla += 6; // now it's left corner of first block of ground
         int x = x_p_ugla;
         int y = y_p_ugla;
         int up, down;
         int hmax, wmax; // renaming and new values
 
-        while(y <= 2 * m - 4) // function of random grounding
+        while (y <= n - 4) // function of random grounding
+        {
+            up = Math.Min(x - 3, 12);
+            down = Math.Min(2 * m - x - 2, 12);
+            int r_up_down, r_range, r_h, r_w;
+            int b_up_down;
+            b_up_down = rand.Next() % 2;
+            if (b_up_down == 1)
+                r_up_down = rand.Next() % Math.Min(5, up + 1);
+            else
+                r_up_down = -1 * (rand.Next() % Math.Min(5, down + 1));
+            int range = Math.Min(5, n - y);
+            r_range = rand.Next() % (range + 1);
+            x -= r_up_down;
+            y += r_range + 1;
+            hmax = Math.Min(6, 2 * m - x - 2);
+            wmax = Math.Min(12, n - y);
+            if (wmax >= 4)
             {
-                up = Math.Min(x - 3, 12);
-                down = Math.Min(2 * m - x - 2, 12);
-                int r_up_down, r_range, r_h, r_w = 1000;
-                int b_up_down;
-                b_up_down = rand.Next() % 2;
-                if(b_up_down == 1)
-                    r_up_down = rand.Next() % Math.Min(5, up + 1);
-                else
-                    r_up_down = -1 * (rand.Next() % Math.Min(5, down + 1));
-                int range = Math.Min(5, n - y);
-                r_range = rand.Next() % (range + 1);
-                x -= r_up_down;
-                y += r_range + 1;
-                hmax = Math.Min(6, 2 * m - x - 2);
-                wmax = Math.Min(12, n - y);
-                if(wmax >= 4)
-                {
-                    r_h = rand.Next() % (hmax - 2) + 3;
-                    r_w = rand.Next() % (wmax - 3) + 4;
-                    for(int i = y; i < y + r_h; i++)
-                        for(int j = x; j < x + r_w; j++)
-                            vs[i, j] = 1;
-                }
-                y += r_w;
+                r_h = rand.Next() % (hmax - 2) + 3;
+                r_w = rand.Next() % (wmax - 3) + 4;
+                for (int i = y; i < y + r_w; i++)
+                    for (int j = x; j < x + r_h; j++)
+                        vs[i, j] = 1;
             }
-        #endregion 
-        //Create symbols
-        for (int i = 1; i < n - 1; i++)
+            else
+                break;
+        }
+            #endregion
+            //Create symbols
+            for (int i = 1; i < n - 1; i++)
         {
             for (int j = 1; j < (2 * m) - 1; j++)
             {
@@ -202,9 +203,9 @@ public class Builder : MonoBehaviour
         cor[xmas, ymas, 0] = StartPoz.transform.position.x;
         cor[xmas, ymas, 1] = StartPoz.transform.position.y;
         //Right-Down
-        for (int i = xmas; i < n-1; i++)
+        for (int i = xmas; i < n - 1; i++)
         {
-            for (int j = ymas; j < 2*m-1; j++)
+            for (int j = ymas; j < 2 * m - 1; j++)
             {
                 cor[i, j, 0] = StartPoz.transform.position.x + xpl;
                 cor[i, j, 1] = StartPoz.transform.position.y + ypl;
@@ -230,7 +231,7 @@ public class Builder : MonoBehaviour
         //Left-Down
         for (int i = xmas; i > 0; i--)
         {
-            for (int j = ymas; j < (2*m)-1; j++)
+            for (int j = ymas; j < (2 * m) - 1; j++)
             {
                 cor[i, j, 0] = StartPoz.transform.position.x + xpl;
                 cor[i, j, 1] = StartPoz.transform.position.y + ypl;
@@ -241,7 +242,7 @@ public class Builder : MonoBehaviour
         }
         ypl = 0; xpl = 0;
         //Right-Up
-        for (int i = xmas; i < n-1; i++)
+        for (int i = xmas; i < n - 1; i++)
         {
             for (int j = ymas; j > 0; j--)
             {
