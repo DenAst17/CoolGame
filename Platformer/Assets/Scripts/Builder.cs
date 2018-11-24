@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject point;
     [HideInInspector]
     public int difficulty = 1;
     [SerializeField]
@@ -70,49 +72,48 @@ public class Builder : MonoBehaviour
         float[,,] cor = new float[n, m * 2, 2];
         #region Denisov Kode
         System.Random rand = new System.Random(); // Randomization of random numbers generator
-            int n1, m1;
-            n1 = n;
-            m1 = m*2;
-        //int[,] vs = new int[n1 + 2, m1 + 2];
-        for (int i = 0; i < n1 + 2; i++)
-                for (int j = 0; j < m1 + 2; j++)
-                    vs[i, j] = 0; // fill zero
+        for (int i = 0; i < n + 2; i++)
+            for (int j = 0; j < 2 * m + 2; j++)
+                vs[i, j] = 0;
 
-            int y_p_ugla = 2;
-            int x_p_ugla = (n1 / 2) - 1;
+        int y_p_ugla = 2;
+        int x_p_ugla = m - 1;
 
-            for (int i = x_p_ugla; i < x_p_ugla + 4; i++)
-                for (int j = y_p_ugla; j < y_p_ugla + 7; j++)
-                    vs[i, j] = 1; // First ground plate 4x7
+        for (int i = y_p_ugla; i < y_p_ugla + 7; i++)
+            for (int j = x_p_ugla; j < x_p_ugla + 4; j++)
+                vs[i, j] = 1; // First ground plate 4x7
 
-            y_p_ugla += 6;
-            int x = x_p_ugla;
-            int y = y_p_ugla;
-            int up, down;
-            int hmax, wmax;
-        while(y <= m1 - 4) // function of random grounding
+        vs[7, m - 2] = 100; // Counting from
+
+        y_p_ugla += 6; // now it's left corner of first block of ground
+        int x = x_p_ugla;
+        int y = y_p_ugla;
+        int up, down;
+        int hmax, wmax; // renaming and new values
+
+        while(y <= 2 * m - 4) // function of random grounding
             {
-                up = Math.Min(Math.Abs(x - 1) - 2, 12);
-                down = Math.Min(Math.Abs(n1 - x - 1) - 3, 12);
-                int r_up_down, r_range, r_h, r_w = 100;
+                up = Math.Min(x - 3, 12);
+                down = Math.Min(2 * m - x - 2, 12);
+                int r_up_down, r_range, r_h, r_w = 1000;
                 int b_up_down;
                 b_up_down = rand.Next() % 2;
                 if(b_up_down == 1)
                     r_up_down = rand.Next() % Math.Min(5, up + 1);
                 else
                     r_up_down = -1 * (rand.Next() % Math.Min(5, down + 1));
-                int range = Math.Min(5, m1 - y - 1);
+                int range = Math.Min(5, n - y);
                 r_range = rand.Next() % (range + 1);
                 x -= r_up_down;
                 y += r_range + 1;
-                hmax = Math.Min(6, n1 - x - 1);
-                wmax = Math.Min(12, m1 - y - 1);
+                hmax = Math.Min(6, 2 * m - x - 2);
+                wmax = Math.Min(12, n - y);
                 if(wmax >= 4)
                 {
-                    r_h = rand.Next() % (hmax -2) + 3;
+                    r_h = rand.Next() % (hmax - 2) + 3;
                     r_w = rand.Next() % (wmax - 3) + 4;
-                    for(int i = x; i < x + r_h; i++)
-                        for(int j = y; j < y + r_w; j++)
+                    for(int i = y; i < y + r_h; i++)
+                        for(int j = x; j < x + r_w; j++)
                             vs[i, j] = 1;
                 }
                 y += r_w;
@@ -314,6 +315,10 @@ public class Builder : MonoBehaviour
                     else if (vs[i, j] == 16)
                     {
                         Instantiate(block_Right_to_Up2, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(point, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
                     }
                 }
             }
