@@ -33,4 +33,8 @@ public class VisualInterfase : MonoBehaviour {
         Bullets.text = Convert.ToString(Hero.bullets);
         HP.transform.localScale = new Vector3(Hero.heart/100,1f,1f);
     }
+    public static void Win()
+    {
+        Time.timeScale = 0;
+    }
 }
