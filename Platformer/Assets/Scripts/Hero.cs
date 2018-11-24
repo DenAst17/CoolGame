@@ -10,7 +10,7 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static float speed = 300.0f;
     [SerializeField]
-    public static float angle = 0f;
+    public float angle = 0f;
     [SerializeField]
     public float jumpForse = 30.0f;
     [SerializeField]
@@ -28,7 +28,7 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static int CoinsBoost = 1;
     [SerializeField]
-    public static float bulletspeed = 20f;
+    public float bulletspeed = 20f;
     [SerializeField]
     public static int bullets = 30;
     [SerializeField]
@@ -44,6 +44,8 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static bool lop = false;
     public static Rigidbody2D rb;
+    [SerializeField]
+    public float diley = 0;
     Animator anim;
     SpriteRenderer sp;
     private void Awake()
@@ -54,40 +56,22 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
+        if (diley > -10)diley -= Time.deltaTime;
+        if (diley < 0) {
+            if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) bulletspeed += 0.7f;
+            if (Input.GetKey(KeyCode.Space) && angle < 45) angle += 0.4f;
+            if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
+        }
+        if (heart<=0)
+        {
+            heart = 100f;
+            SceneManager.LoadScene(0);
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings);
+            heart = 100f;
+            SceneManager.LoadScene(0);
         }
-        if (Input.GetKeyDown(KeyCode.E) && bullets > 0 && !isdead)
-        {
-            Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (transform.position.y + 0.7f < m.y)
-            {
-                if (m.x < transform.position.x + 0.5 && m.x > transform.position.x - 0.5)
-                {
-                    angle = 90;
-                }
-                else if (m.x > transform.position.x + 0.5)
-                {
-                    angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x + 0.5) - m.x)));
-                }
-                else if (m.x < transform.position.x - 0.5)
-                {
-                    angle = (float)(180 / Math.PI) * (float)(Math.Atan(Math.Abs(m.y - (transform.position.y + 0.7)) / Math.Abs((transform.position.x - 0.5) - m.x)));
-                }
-            }
-            else
-            {
-                angle = 0;
-            }
-            if (m.x < transform.position.x)
-            {
-                sp.flipX = true;
-            }
-            else { sp.flipX = false; }
-            Shoot();
-        }
-
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && !isdead) {
             if (isGround() == true)
             {
@@ -156,6 +140,9 @@ public class Hero : MonoBehaviour {
             Vector3 v = new Vector3((float)Math.Cos((angle / 180.0f) * Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
             clone.velocity = transform.TransformDirection(v * bulletspeed);
             bullets--;
+            bulletspeed = 0;
+            angle = 0;
+            diley = 2;
         }
         else if (colorbutton == "green")
         {
@@ -163,6 +150,9 @@ public class Hero : MonoBehaviour {
             Vector3 v = new Vector3((float)Math.Cos((angle / 180.0f) * Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
             clone.velocity = transform.TransformDirection(v * bulletspeed);
             bullets--;
+            bulletspeed = 0;
+            angle = 0;
+            diley = 2;
         }
         else
         {
@@ -170,6 +160,9 @@ public class Hero : MonoBehaviour {
             Vector3 v = new Vector3((float)Math.Cos((angle / 180.0f) * Math.PI) * (sp.flipX ? -1 : 1), (float)Math.Sin((angle / 180.0f) * Math.PI), 0);
             clone.velocity = transform.TransformDirection(v * bulletspeed);
             bullets--;
+            bulletspeed = 0;
+            angle = 0;
+            diley = 2;
         }
     }
     public static void Power(int t, int power)
