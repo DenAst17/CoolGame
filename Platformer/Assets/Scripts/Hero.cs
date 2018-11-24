@@ -28,7 +28,7 @@ public class Hero : MonoBehaviour {
     [SerializeField]
     public static int CoinsBoost = 1;
     [SerializeField]
-    public float bulletspeed = 20f;
+    public static float bulletspeed = 0f;
     [SerializeField]
     public static int bullets = 30;
     [SerializeField]
@@ -45,7 +45,7 @@ public class Hero : MonoBehaviour {
     public static bool lop = false;
     public static Rigidbody2D rb;
     [SerializeField]
-    public float diley = 0;
+    public static float diley = 0;
     Animator anim;
     SpriteRenderer sp;
     private void Awake()
@@ -58,8 +58,8 @@ public class Hero : MonoBehaviour {
     {
         if (diley > -10)diley -= Time.deltaTime;
         if (diley < 0) {
-            if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) bulletspeed += 0.7f;
-            if (Input.GetKey(KeyCode.Space) && angle < 45) angle += 0.4f;
+            if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) { bulletspeed += 0.7f; }
+            if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
             if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
         }
         if (heart<=0)
