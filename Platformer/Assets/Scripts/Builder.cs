@@ -122,7 +122,10 @@ public class Builder : MonoBehaviour
                 y += r_w;
             }
             else
+            {
+                y -= r_range + 1;
                 continue;
+            }
         }
             #endregion
         //Create symbols
