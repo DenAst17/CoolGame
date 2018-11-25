@@ -22,6 +22,7 @@ public class Builder : MonoBehaviour
     public float xpl = 0;
     public float ypl = 0;
     #region GameObjects(var)
+    public GameObject monsterbone;
     public GameObject StartPoz;
     private GameObject block_middle;
     private GameObject block_Left;
@@ -67,7 +68,6 @@ public class Builder : MonoBehaviour
                 LevelvsSummer();
                 break;
         }
-
         int[,] vs = new int[n + 2, (m * 2) + 2]; //Create array
         float[,,] cor = new float[n, m * 2, 2];
         #region Denisov Kode
@@ -121,8 +121,8 @@ public class Builder : MonoBehaviour
                 continue;
         }
             #endregion
-            //Create symbols
-            for (int i = 1; i < n - 1; i++)
+        //Create symbols
+        for (int i = 1; i < n - 1; i++)
         {
             for (int j = 1; j < (2 * m) - 1; j++)
             {
@@ -217,9 +217,9 @@ public class Builder : MonoBehaviour
         }
         ypl = 0; xpl = 0;
         //Left-Up
-        for (int i = xmas; i > 0; i--)
+        for (int i = xmas; i >= 0; i--)
         {
-            for (int j = ymas; j > 0; j--)
+            for (int j = ymas; j >= 0; j--)
             {
                 cor[i, j, 0] = StartPoz.transform.position.x + xpl;
                 cor[i, j, 1] = StartPoz.transform.position.y + ypl;
@@ -230,7 +230,7 @@ public class Builder : MonoBehaviour
         }
         ypl = 0; xpl = 0;
         //Left-Down
-        for (int i = xmas; i > 0; i--)
+        for (int i = xmas; i >= 0; i--)
         {
             for (int j = ymas; j < (2 * m) - 1; j++)
             {
@@ -245,16 +245,27 @@ public class Builder : MonoBehaviour
         //Right-Up
         for (int i = xmas; i < n - 1; i++)
         {
-            for (int j = ymas; j > 0; j--)
+            for (int j = ymas; j >= 0; j--)
             {
                 cor[i, j, 0] = StartPoz.transform.position.x + xpl;
                 cor[i, j, 1] = StartPoz.transform.position.y + ypl;
                 ypl++;
             }
             ypl = 0;
-            xpl--;
+            xpl++;
         }
         ypl = 0; xpl = 0;
+        //Create monsters
+        for (int i = 1; i < n - 1; i++)
+        {
+            for (int j = 1; j < (2 * m) - 1; j++)
+            {
+                if (vs[i, j+1] == 10 && i > xmas)
+                {
+                    Instantiate(monsterbone, new Vector3(cor[i, j, 0], cor[i, j, 1]+0.7f, 0f), transform.rotation);
+                }
+            }
+        }
         //Create
         for (int i = 0; i < n - 1; i++)
         {
@@ -322,6 +333,20 @@ public class Builder : MonoBehaviour
                     {
                         Instantiate(point, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
                     }
+
+                }
+                else
+                {/*
+                    Instantiate(point, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
+                    TextMesh text = point.GetComponent<TextMesh>();
+                    text.text = Convert.ToString(cor[i, j, 0]);
+                    text.text += " ";
+                    text.text += Convert.ToString(cor[i, j, 1]);
+                    text.text += " -cor \n";
+                    text.text += Convert.ToString(i);
+                    text.text += " ";
+                    text.text += Convert.ToString(j);
+                    text.text += " -vs ";*/
                 }
             }
         }
