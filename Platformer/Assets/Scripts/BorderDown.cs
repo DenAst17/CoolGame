@@ -6,9 +6,13 @@ using UnityEngine;
 public class BorderDown : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadSceneAsync(1);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SceneManager.LoadSceneAsync(0);
         }
     }
 }

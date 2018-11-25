@@ -752,7 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 1516192770764924, guid: 7243d000433e64c47acdefe120d33481, type: 2}
-  border: {fileID: 1516192770764924, guid: 7243d000433e64c47acdefe120d33481, type: 2}
+  bor: {fileID: 1687491728406352, guid: 716bdf2793eae56459f67bdb6b3211df, type: 2}
   difficulty: 1
   level: 1
   n: 150
@@ -761,6 +761,8 @@ MonoBehaviour:
   ymas: 0
   xpl: 0
   ypl: 0
+  xp: 0
+  yp: 0
   monsterbone: {fileID: 1745672225637526, guid: f78f3d7d492203b48851b7d4d8d13610,
     type: 2}
   StartPoz: {fileID: 1961212508}
