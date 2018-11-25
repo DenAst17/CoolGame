@@ -106,6 +106,8 @@ public class Builder : MonoBehaviour
             r_range = rand.Next() % (range + 1);
             if (r_up_down == 4 && r_range == 5)
                 r_range--;
+            if (r_up_down == 3 && r_range == 5)
+                r_range--;
             x -= r_up_down;
             y += r_range + 1;
             hmax = Math.Min(6, 2 * m - x - 2);
