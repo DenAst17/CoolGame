@@ -754,8 +754,8 @@ MonoBehaviour:
   point: {fileID: 1516192770764924, guid: 7243d000433e64c47acdefe120d33481, type: 2}
   difficulty: 1
   level: 1
-  n: 90
-  m: 20
+  n: 40
+  m: 10
   xmas: 0
   ymas: 0
   xpl: 0
