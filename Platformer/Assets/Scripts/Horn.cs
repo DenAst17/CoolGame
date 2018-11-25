@@ -10,12 +10,16 @@ public class Horn : MonoBehaviour {
     private string fi = "Right";
     [SerializeField]
     private float speed = 3;
+    [SerializeField]
+    private float hi = 0;
     private void Awake()
     {
         sp = GetComponent<SpriteRenderer>();
+        hi = UnityEngine.Random.Range(0,360);
     }
     void Update () {
-        transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(Time.time * Math.PI * 1.5) / -100, transform.position.z);
+        hi += UnityEngine.Random.Range(0.01f, 0.04f);
+        transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(hi * Math.PI * 1.5) / -100, transform.position.z);
         if (fi == "Right")
         {
             transform.position += Vector3.right * speed;

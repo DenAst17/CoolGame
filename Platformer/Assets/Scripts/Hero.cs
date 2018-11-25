@@ -56,23 +56,40 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q) && SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            heart = 100f;
+            SceneManager.LoadSceneAsync(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Q) && SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadSceneAsync(0);
+        }
         if (diley > -10)diley -= Time.deltaTime;
         if (diley < 0) {
             if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) { bulletspeed += 0.7f; }
             if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
             if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
         }
-        if (heart<=0)
+        if (heart<=0 && SceneManager.GetActiveScene().buildIndex == 0)
         {
             heart = 100f;
-            int i = Application.loadedLevel;
-            SceneManager.LoadScene(i);
+            SceneManager.LoadSceneAsync(0);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (heart <= 0 && SceneManager.GetActiveScene().buildIndex == 1)
         {
             heart = 100f;
-            int i = Application.loadedLevel;
-            SceneManager.LoadScene(i);
+            SceneManager.LoadSceneAsync(1);
+        }
+        if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            heart = 100f;
+            SceneManager.LoadSceneAsync(1);
+        }
+        if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            heart = 100f;
+            SceneManager.LoadSceneAsync(0);
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && !isdead) {
             if (isGround() == true)

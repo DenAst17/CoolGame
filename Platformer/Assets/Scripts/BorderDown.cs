@@ -8,8 +8,7 @@ public class BorderDown : MonoBehaviour {
     {
         if (collision.gameObject.tag == "player")
         {
-            int i = Application.loadedLevel;
-            SceneManager.LoadScene(i);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

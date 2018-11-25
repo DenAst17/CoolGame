@@ -72,6 +72,7 @@ MonoBehaviour:
   sp: {fileID: 0}
   fi: Right
   speed: 0.04
+  hi: 0
 --- !u!114 &114937045178549748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   p: 65
+  damage: 80
 --- !u!212 &212148823576780468
 SpriteRenderer:
   m_ObjectHideFlags: 1
