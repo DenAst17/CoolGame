@@ -65,12 +65,12 @@ public class Hero : MonoBehaviour {
         if (heart<=0)
         {
             heart = 100f;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             heart = 100f;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && !isdead) {
             if (isGround() == true)
