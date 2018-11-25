@@ -99,7 +99,7 @@ public class Builder : MonoBehaviour
             int b_up_down;
             b_up_down = rand.Next() % 2;
             if (b_up_down == 1)
-                r_up_down = rand.Next() % Math.Min(5, up + 1);
+                r_up_down = rand.Next() % Math.Min(4, up + 1);
             else
                 r_up_down = -1 * (rand.Next() % Math.Min(5, down + 1));
             int range = Math.Min(5, n - y);
