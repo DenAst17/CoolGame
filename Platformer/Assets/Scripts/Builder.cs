@@ -84,7 +84,7 @@ public class Builder : MonoBehaviour
             for (int j = x_p_ugla; j < x_p_ugla + 4; j++)
                 vs[i, j] = 1; // First ground plate 4x7
 
-        vs[7, m - 2] = 100; // Counting from
+        vs[7, m - 7] = 100; // Counting from
         y_p_ugla += 6; // now it's right corner of first block of ground
         int x = x_p_ugla;
         int y = y_p_ugla;
@@ -107,7 +107,7 @@ public class Builder : MonoBehaviour
             x -= r_up_down;
             y += r_range + 1;
             hmax = Math.Min(6, 2 * m - x - 2);
-            wmax = Math.Min(12, n - y);
+            wmax = Math.Min(12, n - y - 1);
             if (wmax >= 4 && hmax >= 3)
             {
                 r_h = rand.Next() % (hmax - 2) + 3;
@@ -120,18 +120,6 @@ public class Builder : MonoBehaviour
             else
                 continue;
         }
-
-        for (int i = 0; i < n + 2; i++) //На всякий случай обнулил границы
-        {
-            vs[i, 0] = 0;
-            vs[i, 2 * m + 1] = 0;
-        }
-        for (int i = 0; i < 2 * m + 2; i++)
-        {
-            vs[0, i] = 0;
-            vs[n + 1, i] = 0;
-        }
-
             #endregion
             //Create symbols
             for (int i = 1; i < n - 1; i++)
