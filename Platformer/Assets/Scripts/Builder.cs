@@ -340,8 +340,8 @@ public class Builder : MonoBehaviour
 
                 }
                 else
-                {
-                    /*Instantiate(point, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
+                {/*
+                    Instantiate(point, new Vector3(cor[i, j, 0], cor[i, j, 1], 0f), transform.rotation);
                     TextMesh text = point.GetComponent<TextMesh>();
                     text.text = Convert.ToString(cor[i, j, 0]);
                     text.text += " ";
