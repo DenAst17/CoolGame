@@ -153,7 +153,8 @@ public class Builder : MonoBehaviour
                     y--;
             }
         }
-            #endregion
+        vs[y - 1, x - 1] = 77;
+        #endregion
         //Create symbols
         for (int i = 1; i < n - 1; i++)
         {
