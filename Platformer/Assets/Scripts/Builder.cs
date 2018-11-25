@@ -68,7 +68,7 @@ public class Builder : MonoBehaviour
                 break;
         }
 
-        int[,] vs = new int[n + 2, (m * 2) + 2]; //Create massive
+        int[,] vs = new int[n + 2, (m * 2) + 2]; //Create array
         float[,,] cor = new float[n, m * 2, 2];
         #region Denisov Kode
         System.Random rand = new System.Random(); // Randomization of random numbers generator
@@ -85,7 +85,7 @@ public class Builder : MonoBehaviour
                 vs[i, j] = 1; // First ground plate 4x7
 
         vs[7, m - 2] = 100; // Counting from
-        y_p_ugla += 6; // now it's left corner of first block of ground
+        y_p_ugla += 6; // now it's right corner of first block of ground
         int x = x_p_ugla;
         int y = y_p_ugla;
         int up, down;
@@ -108,17 +108,30 @@ public class Builder : MonoBehaviour
             y += r_range + 1;
             hmax = Math.Min(6, 2 * m - x - 2);
             wmax = Math.Min(12, n - y);
-            if (wmax >= 4)
+            if (wmax >= 4 && hmax >= 3)
             {
                 r_h = rand.Next() % (hmax - 2) + 3;
                 r_w = rand.Next() % (wmax - 3) + 4;
                 for (int i = y; i < y + r_w; i++)
                     for (int j = x; j < x + r_h; j++)
                         vs[i, j] = 1;
+                y += r_w;
             }
             else
-                break;
+                continue;
         }
+
+        for (int i = 0; i < n + 2; i++) //На всякий случай обнулил границы
+        {
+            vs[i, 0] = 0;
+            vs[i, 2 * m + 1] = 0;
+        }
+        for (int i = 0; i < 2 * m + 2; i++)
+        {
+            vs[0, i] = 0;
+            vs[n + 1, i] = 0;
+        }
+
             #endregion
             //Create symbols
             for (int i = 1; i < n - 1; i++)
