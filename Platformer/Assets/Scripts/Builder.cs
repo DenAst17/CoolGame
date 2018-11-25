@@ -70,7 +70,7 @@ public class Builder : MonoBehaviour
                 LevelvsSummer();
                 break;
         }
-        int[,] vs = new int[n + 2, (m * 2) + 2]; //Create array
+        int[,] vs = new int[n + 2 + 100, (m * 2) + 2 + 100]; //Create array
         float[,,] cor = new float[n, m * 2, 2];
         #region Denisov Kode
         System.Random rand = new System.Random(); // Randomization of random numbers generator
