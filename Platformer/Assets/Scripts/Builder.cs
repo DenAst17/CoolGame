@@ -8,8 +8,8 @@ public class Builder : MonoBehaviour
     [SerializeField]
     public GameObject point;
     [SerializeField]
-    public GameObject border;
-    [HideInInspector]
+    public GameObject bor;
+    [SerializeField]
     public int difficulty = 1;
     [SerializeField]
     int level = 1;
@@ -23,6 +23,8 @@ public class Builder : MonoBehaviour
     public int ymas = 0;
     public float xpl = 0;
     public float ypl = 0;
+    public int xp = 0;
+    public int yp = 0;
     #region GameObjects(var)
     public GameObject monsterbone;
     public GameObject StartPoz;
@@ -166,6 +168,12 @@ public class Builder : MonoBehaviour
                     xmas = i - 1;
                     vs[i, j] = 0;
                 }
+                if (vs[i, j] == 77)
+                {
+                    yp = j - 1;
+                    xp = i - 1;
+                    vs[i, j] = 0;
+                }
             }
         }
         for (int i = 1; i < n - 1; i++)
@@ -300,7 +308,8 @@ public class Builder : MonoBehaviour
                 }
             }
         }
-        Instantiate(monsterbone, new Vector3(cor[10, (2 * m) - 2, 0], cor[10, (2 * m) - 2, 1] + 0.7f, 0f), transform.rotation);
+        //Instantiate(monsterbone, new Vector3(cor[10, (2 * m) - 2, 0], cor[10, (2 * m) - 2, 1] + 0.7f, 0f), transform.rotation);
+        Instantiate(bor, new Vector3(cor[xp, yp, 0], cor[xp, yp, 1]-0.5f, 0f), transform.rotation);
         //Create
         for (int i = 0; i < n - 1; i++)
         {
