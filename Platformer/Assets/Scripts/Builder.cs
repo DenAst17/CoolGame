@@ -7,6 +7,8 @@ public class Builder : MonoBehaviour
 {
     [SerializeField]
     public GameObject point;
+    [SerializeField]
+    public GameObject border;
     [HideInInspector]
     public int difficulty = 1;
     [SerializeField]
@@ -273,6 +275,7 @@ public class Builder : MonoBehaviour
                 }
             }
         }
+        Instantiate(monsterbone, new Vector3(cor[10, (2 * m) - 2, 0], cor[10, (2 * m) - 2, 1] + 0.7f, 0f), transform.rotation);
         //Create
         for (int i = 0; i < n - 1; i++)
         {
