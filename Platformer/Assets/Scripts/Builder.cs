@@ -89,42 +89,66 @@ public class Builder : MonoBehaviour
         int x = x_p_ugla;
         int y = y_p_ugla;
         int up, down;
+        int nn;
+        int r_up_down, r_range, r_h = 4, r_w = 7;
+        int b_up_down = 0;
         int hmax, wmax; // renaming and new values
-
+        
         while (y <= n - 4) // function of random grounding
         {
-            up = Math.Min(x - 3, 12);
-            down = Math.Min(2 * m - x - 2, 12);
-            int r_up_down, r_range, r_h, r_w;
-            int b_up_down;
-            b_up_down = rand.Next() % 2;
-            if (b_up_down == 1)
-                r_up_down = rand.Next() % Math.Min(4, up + 1);
-            else
-                r_up_down = -1 * (rand.Next() % Math.Min(5, down + 1));
             int range = Math.Min(5, n - y);
             r_range = rand.Next() % (range + 1);
-            if (r_up_down == 4 && r_range == 5)
-                r_range--;
-            if (r_up_down == 3 && r_range == 5)
-                r_range--;
-            x -= r_up_down;
-            y += r_range + 1;
-            hmax = Math.Min(6, 2 * m - x - 2);
-            wmax = Math.Min(12, n - y - 1);
-            if (wmax >= 4 && hmax >= 3)
+            if(r_range != 0)
             {
-                r_h = rand.Next() % (hmax - 2) + 3;
-                r_w = rand.Next() % (wmax - 3) + 4;
-                for (int i = y; i < y + r_w; i++)
-                    for (int j = x; j < x + r_h; j++)
-                        vs[i, j] = 1;
-                y += r_w;
+                up = Math.Min(x - 3, 12);
+                down = Math.Min(2 * m - x, 12);
+                b_up_down = rand.Next() % 2;
+                if (b_up_down == 1)
+                    r_up_down = rand.Next() % Math.Min(4, up + 1);
+                else
+                    r_up_down = -1 * (rand.Next() % Math.Min(5, down + 1));
+                if (r_up_down == 4 && r_range >= 4)
+                    r_range--;
+                if (r_up_down == 3 && r_range >= 4)
+                    r_range--;
+                x -= r_up_down;
+                y += r_range + 1;
+                hmax = Math.Min(6, 2 * m - x - 2);
+                wmax = Math.Min(12, n - y - 1);
+                if (wmax >= 4 && hmax >= 3)
+                {
+                    r_h = rand.Next() % (hmax - 2) + 3;
+                    r_w = rand.Next() % (wmax - 3) + 4;
+                    for (int i = y; i < y + r_w; i++)
+                        for (int j = x; j < x + r_h; j++)
+                            vs[i, j] = 1;
+                    y += r_w;
+                }
+                else
+                    y -= r_range + 1;
             }
             else
             {
-                y -= r_range + 1;
-                continue;
+                y++;
+                hmax = Math.Min(6 - r_h, x - 1);
+                wmax = Math.Min(12, n - y - 1);
+                if (wmax >= 4)
+                {
+                    b_up_down = rand.Next() % 2;
+                    if (b_up_down == 1)
+                        nn = rand.Next() % (hmax + 1);
+                    else
+                        nn = -1 * (rand.Next() % (hmax + 1));
+                    x -= nn;
+                    r_h += nn;
+                    r_w = rand.Next() % (wmax - 3) + 4;
+                    for (int i = y; i < y + r_w; i++)
+                        for (int j = x; j < x + r_h; j++)
+                            vs[i, j] = 1;
+                    y += r_w - 1;
+                }
+                else
+                    y--;
             }
         }
             #endregion
