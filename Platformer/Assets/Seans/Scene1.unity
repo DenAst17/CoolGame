@@ -755,7 +755,7 @@ MonoBehaviour:
   bor: {fileID: 1687491728406352, guid: 716bdf2793eae56459f67bdb6b3211df, type: 2}
   difficulty: 1
   level: 1
-  n: 150
+  n: 75
   m: 10
   xmas: 0
   ymas: 0
