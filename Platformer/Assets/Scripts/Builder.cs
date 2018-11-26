@@ -97,14 +97,17 @@ public class Builder : MonoBehaviour
                 greed[i, j] = "null";
             }
         }//fill "null"
-        greed[8, 3] = "Character";
+        greed[8, 2] = "Character";
         for (int i = 4; i < 12; i++)
         {
-            for (int j = 4; j >= 8; j++)
+            for (int j = 4; j <= 8; j++)
             {
                 greed[i, j] = "Solid";
             }
         }
+        greed[6, 3] = "Solid";
+        greed[7, 3] = "Solid";
+        greed[8, 3] = "Solid";
         #endregion
         //Symbols
         for (int i = 1; i < a; i++)
@@ -113,9 +116,9 @@ public class Builder : MonoBehaviour
             {
                 if (greed[i,j] == "Character")
                 {
-                    Debug.Log("Character");
                     persx = i-1;
                     persy = j-1;
+                    greed[i, j] = "null";
                 }
             }
         }
@@ -167,11 +170,11 @@ public class Builder : MonoBehaviour
                     {
                         if (greed[i + 1, j - 1] == "null" && greed[i - 1, j - 1] != "null")
                         {
-                            greed[i, j] = "block_Left_to_Up1";
+                            greed[i, j] = "block_Right_to_Up1";
                         }
                         else if (greed[i + 1, j - 1] != "null" && greed[i - 1, j - 1] == "null")
                         {
-                            greed[i, j] = "block_Right_to_Up1";
+                            greed[i, j] = "block_Left_to_Up1";
                         }
                         else
                         {
@@ -203,17 +206,70 @@ public class Builder : MonoBehaviour
                 {
                     if (greed[i, j] == "block_middle")
                     {
-                        Instantiate(block_middle, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 0], 0), transform.rotation);
+                        Instantiate(block_middle, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Left")
+                    {
+                        Instantiate(block_Left, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Left_Down")
+                    {
+                        Instantiate(block_Left_Down, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Left_Up")
+                    {
+                        Instantiate(block_Left_Up, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Right")
+                    {
+                        Instantiate(block_Right, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Right_Down")
+                    {
+                        Instantiate(block_Right_Down, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Right_Up")
+                    {
+                        Instantiate(block_Right_Up, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Down")
+                    {
+                        Instantiate(block_Down, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Up")
+                    {
+                        Instantiate(block_Up, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "Platform_3")
+                    {
+                        Instantiate(Platform_3, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Left_to_Up1")
+                    {
+                        Instantiate(block_Left_to_Up1, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Left_to_Up2")
+                    {
+                        Instantiate(block_Left_to_Up2, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Right_to_Up1")
+                    {
+                        Instantiate(block_Right_to_Up1, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    }
+                    else if (greed[i, j] == "block_Right_to_Up2")
+                    {
+                        Instantiate(block_Right_to_Up2, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
                     }
                 }
                 else
                 {
-                    Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 0], 0), transform.rotation);
+                    /*
+                    Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
                     TextMesh text = debug.GetComponent<TextMesh>();
-                    text.text = greed[i, j] + " KO\nx-" + Convert.ToString(cor[i - 1, j - 1, 0]) +" y-"+ Convert.ToString(cor[i - 1, j - 1, 0]) + "\n" + Convert.ToString(i) +" "+ Convert.ToString(j);
+                    text.text = greed[i, j] + " KO\nx-" + Convert.ToString(cor[i - 1, j - 1, 0]) +" y-"+ Convert.ToString(cor[i - 1, j - 1, 0]) + "\n" + Convert.ToString(i-1) +" "+ Convert.ToString(j-1);
+                    */
                 }
             }
         }
     }
-
 }
