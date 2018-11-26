@@ -86,7 +86,7 @@ public class Builder : MonoBehaviour
             }
             ypl = 0;
             xpl++;
-        }//create pozitions
+        }//create positions
         #region DenisovCode
         //Code
         for (int i = 0; i < a+2; i++)
