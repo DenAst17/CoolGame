@@ -13,6 +13,6 @@ public class Water : MonoBehaviour {
     private void Update()
     {
         Transform Tt = GetComponent<Transform>();
-        Tt.position = new Vector3(transform.position.x+speed*Time.deltaTime,transform.position.y+(float)Math.Sin(Time.time * Math.PI * 1.3) / -100, transform.position.z);
+        Tt.position = new Vector3(transform.position.x,transform.position.y+(float)Math.Sin(Time.time * Math.PI) / -100, transform.position.z);
     }
 }
