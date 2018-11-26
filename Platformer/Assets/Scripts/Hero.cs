@@ -5,9 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Hero : MonoBehaviour {
-    [SerializeField]
     public static float heart = 100f;
-    [SerializeField]
     public static float speed = 300.0f;
     [SerializeField]
     public float angle = 0f;
@@ -15,7 +13,6 @@ public class Hero : MonoBehaviour {
     public float jumpForse = 30.0f;
     [SerializeField]
     public int jumps = 0;
-    [SerializeField]
     public static int coins = 0;
     [SerializeField]
     private Rigidbody2D bulletblue;
@@ -23,28 +20,16 @@ public class Hero : MonoBehaviour {
     private Rigidbody2D bulletgreen;
     [SerializeField]
     private Rigidbody2D bulletred;
-    [SerializeField]
     public static string colorbutton = "blue";
-    [SerializeField]
     public static int CoinsBoost = 1;
-    [SerializeField]
     public static float bulletspeed = 0f;
-    [SerializeField]
     public static int bullets = 30;
-    [SerializeField]
     public static float timetodestroybullet = 30;
-    [SerializeField]
     public static float MaxHP = 100f;
-    [SerializeField]
-    public bool isdead = false;
-    [SerializeField]
     public static float prom = 0;
-    [SerializeField]
     public static float promtime = 0;
-    [SerializeField]
     public static bool lop = false;
     public static Rigidbody2D rb;
-    [SerializeField]
     public static float diley = 0;
     Animator anim;
     SpriteRenderer sp;
@@ -63,6 +48,7 @@ public class Hero : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Q) && SceneManager.GetActiveScene().buildIndex == 1)
         {
+            heart = 100f;
             SceneManager.LoadSceneAsync(0);
         }
         if (diley > -10)diley -= Time.deltaTime;
@@ -71,27 +57,12 @@ public class Hero : MonoBehaviour {
             if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
             if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
         }
-        if (heart<=0 && SceneManager.GetActiveScene().buildIndex == 0)
+        if (Input.GetKeyDown(KeyCode.R) || heart <= 0)
         {
             heart = 100f;
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
-        if (heart <= 0 && SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            heart = 100f;
-            SceneManager.LoadSceneAsync(1);
-        }
-        if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            heart = 100f;
-            SceneManager.LoadSceneAsync(1);
-        }
-        if (Input.GetKeyDown(KeyCode.R) && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            heart = 100f;
-            SceneManager.LoadSceneAsync(0);
-        }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && !isdead) {
+        if (Input.GetKeyDown(KeyCode.W)) {
             if (isGround() == true)
             {
                 if (jumps < 2)
@@ -107,11 +78,11 @@ public class Hero : MonoBehaviour {
                 jumps++;
             }
         }
-        if (Input.GetAxis("Horizontal") == 0 && !isdead)
+        if (Input.GetAxis("Horizontal") == 0)
         {
             anim.SetInteger("State", 0);
         }
-        else if (!isdead)
+        else
         {
             if (Input.GetAxis("Horizontal") < 0)
             {
@@ -123,11 +94,11 @@ public class Hero : MonoBehaviour {
             }
             anim.SetInteger("State", 1);
         }
-        if (rb.velocity.y > 0 && !isdead && isGround() == true)
+        if (rb.velocity.y > 0  && isGround() == true)
         {
             anim.SetInteger("State", 2);
         }
-        else if (rb.velocity.y < 0 && !isdead && isGround() == true)
+        else if (rb.velocity.y < 0  && isGround() == true)
         {
             anim.SetInteger("State", 3);
         }

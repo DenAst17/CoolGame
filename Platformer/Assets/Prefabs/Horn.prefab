@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212148823576780468}
   - component: {fileID: 58686122380368172}
   - component: {fileID: 114144522093040470}
-  - component: {fileID: 114937045178549748}
   m_Layer: 0
   m_Name: Horn
   m_TagString: Untagged
@@ -73,19 +72,8 @@ MonoBehaviour:
   fi: Right
   speed: 0.04
   hi: 0
---- !u!114 &114937045178549748
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745672225637526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fc98b8cdf5186b48ad8b0e487379338, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   p: 65
-  damage: 100
+  damage: 20
 --- !u!212 &212148823576780468
 SpriteRenderer:
   m_ObjectHideFlags: 1

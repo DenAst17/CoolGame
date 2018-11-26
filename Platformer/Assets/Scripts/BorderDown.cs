@@ -6,13 +6,10 @@ using UnityEngine;
 public class BorderDown : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (collision.gameObject.tag == "player")
         {
-            SceneManager.LoadSceneAsync(1);
-        }
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            SceneManager.LoadSceneAsync(0);
+            Hero.heart = 100f;
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

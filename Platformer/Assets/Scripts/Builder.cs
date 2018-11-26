@@ -47,6 +47,9 @@ public class Builder : MonoBehaviour
     private GameObject block_Right_to_Up1;
     private GameObject block_Right_to_Up2;
     #endregion
+    #region Enemies
+    private GameObject FlyingSkelet;
+    #endregion
     void LevelvsSummer()
     {
         Platform_3 = Resources.Load("SPlatform3") as GameObject;
@@ -90,7 +93,6 @@ public class Builder : MonoBehaviour
             ypl = 0;
             xpl++;
         }//create positions
-
         #region DenisovCode
         //Code
         for (int i = 0; i < a+2; i++)

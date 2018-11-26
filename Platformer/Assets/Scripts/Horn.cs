@@ -4,7 +4,6 @@ using System;
 using UnityEngine;
 
 public class Horn : MonoBehaviour {
-    [SerializeField]
     private SpriteRenderer sp;
     [SerializeField]
     private string fi = "Right";
@@ -12,6 +11,18 @@ public class Horn : MonoBehaviour {
     private float speed = 3;
     [SerializeField]
     private float hi = 0;
+    [SerializeField]
+    private float p = 65;
+    [SerializeField]
+    private float damage = 20;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            Hero.heart -= damage;
+            Hero.takedamage(p);
+        }
+    }
     private void Awake()
     {
         sp = GetComponent<SpriteRenderer>();

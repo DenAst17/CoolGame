@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour {
     private void Awake()
     {
         if (!target) target = FindObjectOfType<Hero>().transform;
+        transform.position = new Vector3(target.position.x,target.position.y+0.5f,lensh);
     }
 
     private void Update()
