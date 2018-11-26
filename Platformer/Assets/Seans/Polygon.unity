@@ -3455,6 +3455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1113909567}
   - component: {fileID: 1113909566}
+  - component: {fileID: 1113909568}
   m_Layer: 0
   m_Name: WaterUp
   m_TagString: Untagged
@@ -3521,6 +3522,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113909568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113909565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeaca18c5e92b994d8f28f88355f3f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ac:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.46242556
+      outSlope: 0.46242556
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.016177177
+      value: 1.0074807
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.04086721
+      value: 0.9956404
+      inSlope: -0.01125852
+      outSlope: -0.01125852
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.049899682
+      value: 0.99987423
+      inSlope: 0.4687351
+      outSlope: 0.4687351
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  speed: 1
+  clones: 3
+  border: 4
+  dir: {x: 0, y: 0, z: 0}
 --- !u!4 &1116801652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4131289720261358, guid: c940faffc51be534988295b24b89b726,
@@ -5639,6 +5697,11 @@ Prefab:
     - target: {fileID: 4016398175709022, guid: f7da083709acb8b4f852971dffd13a88, type: 2}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 61079215654477986, guid: f7da083709acb8b4f852971dffd13a88,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7da083709acb8b4f852971dffd13a88, type: 2}
