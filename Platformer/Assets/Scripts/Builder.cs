@@ -73,12 +73,13 @@ public class Builder : MonoBehaviour
                 LevelvsSummer();
                 break;
         }
-        int xpl = 0, ypl = 0,persx = 0,persy = 0;
+        float xpl = 0, ypl = 0;
+        int persx = 0, persy = 0;
         string[,] greed = new string[a + 2, h + 2];
         float[,,] cor = new float[a, h, 2];
         for (int i = 0; i < a; i++)
         {
-            for (int j = h-1; j >= 0; j--)
+            for (int j = h - 1; j >= 0; j--)
             {
                 cor[i, j, 0] = xpl;
                 cor[i, j, 1] = ypl;
