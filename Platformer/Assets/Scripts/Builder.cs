@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Builder : MonoBehaviour
 {
+    #region Constants
     [SerializeField]
     private GameObject character;
     [SerializeField]
@@ -29,6 +30,7 @@ public class Builder : MonoBehaviour
     [SerializeField]
     private int coins = 10;//Количество монет
     public static int moneys = 100;//Суммарная стоимость монет
+    #endregion
     #region Blocks
     private GameObject block_middle;
     private GameObject block_Left;
@@ -88,6 +90,7 @@ public class Builder : MonoBehaviour
             ypl = 0;
             xpl++;
         }//create positions
+
         #region DenisovCode
         //Code
         for (int i = 0; i < a+2; i++)
