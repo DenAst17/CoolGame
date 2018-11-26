@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 60915291306854126}
   - component: {fileID: 251698729302390056}
   m_Layer: 0
-  m_Name: Platform3
+  m_Name: SPlatform3
   m_TagString: Solid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
