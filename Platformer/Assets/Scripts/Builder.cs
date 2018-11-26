@@ -209,7 +209,7 @@ public class Builder : MonoBehaviour
                 {
                     Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 0], 0), transform.rotation);
                     TextMesh text = debug.GetComponent<TextMesh>();
-                    text.text = greed[i, j] + " KO\n" + Convert.ToString(i) +" "+ Convert.ToString(j);
+                    text.text = greed[i, j] + " KO\nx-" + Convert.ToString(cor[i - 1, j - 1, 0]) +" y-"+ Convert.ToString(cor[i - 1, j - 1, 0]) + "\n" + Convert.ToString(i) +" "+ Convert.ToString(j);
                 }
             }
         }
