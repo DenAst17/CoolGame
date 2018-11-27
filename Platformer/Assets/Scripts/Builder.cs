@@ -104,9 +104,15 @@ public class Builder : MonoBehaviour
             for (int j = 0; j < h + 2; j++)
                 greed[i, j] = "null"; //fill "null"
         for (int i = 1; i <= 3; i++)
-            for (int j = h; j >= h - 1; j--)
+            for (int j = h - 1; j <= h; j++)
                 greed[i, j] = "Solid"; // 3x2 platform
         greed[2, h - 4] = "Character";
+        int x = h - 3, y = 3;
+        int[] ar = new int[a + 2];
+        for (int i = 0; i < a + 2; i++)
+            ar[i] = 0;
+        int n_zem = a * o * 70 / 100;
+
         #endregion
         //Symbols
         for (int i = 1; i < a; i++)
@@ -263,9 +269,9 @@ public class Builder : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
+                    /*Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
                     TextMesh text = debug.GetComponent<TextMesh>();
-                    text.text = greed[i, j] + " KO\nx-" + cor[i - 1, j - 1, 0] +" y-"+ cor[i - 1, j - 1, 1] + "\n" + i +" "+ j;
+                    text.text = greed[i, j] + " KO\nx-" + cor[i - 1, j - 1, 0] +" y-"+ cor[i - 1, j - 1, 1] + "\n" + i +" "+ j;*/
                 }
             }
         }
