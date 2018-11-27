@@ -100,34 +100,23 @@ public class Builder : MonoBehaviour
         }//create positions
         #region DenisovCode
         //Code
-        for (int i = 0; i < a+2; i++)
-        {
-            for (int j = 0; j < h+2; j++)
-            {
-                greed[i, j] = "null";
-            }
-        }//fill "null"
-        greed[8, 2] = "Character";
-        for (int i = 4; i < 12; i++)
-        {
-            for (int j = 4; j <= 8; j++)
-            {
-                greed[i, j] = "Solid";
-            }
-        }
-        greed[6, 3] = "Solid";
-        greed[7, 3] = "Solid";
-        greed[8, 3] = "Solid";
+        for (int i = 0; i < a + 2; i++)
+            for (int j = 0; j < h + 2; j++)
+                greed[i, j] = "null"; //fill "null"
+        for (int i = 1; i <= 3; i++)
+            for (int j = h - 2; j <= h - 1; j++)
+                greed[i, j] = "Solid"; // 3x2 platform
+        greed[2, h - 4] = "Character";
         #endregion
         //Symbols
         for (int i = 1; i < a; i++)
         {
             for (int j = 1; j < h; j++)
             {
-                if (greed[i,j] == "Character")
+                if (greed[i, j] == "Character")
                 {
-                    persx = i-1;
-                    persy = j-1;
+                    persx = i - 1;
+                    persy = j - 1;
                     greed[i, j] = "null";
                 }
             }
@@ -274,11 +263,9 @@ public class Builder : MonoBehaviour
                 }
                 else
                 {
-                    /*
                     Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
                     TextMesh text = debug.GetComponent<TextMesh>();
-                    text.text = greed[i, j] + " KO\nx-" + Convert.ToString(cor[i - 1, j - 1, 0]) +" y-"+ Convert.ToString(cor[i - 1, j - 1, 0]) + "\n" + Convert.ToString(i-1) +" "+ Convert.ToString(j-1);
-                    */
+                    text.text = greed[i, j] + " KO\nx-" + Convert.ToString(cor[i - 1, j - 1, 0]) +" y-"+ Convert.ToString(cor[i - 1, j - 1, 1]) + "\n" + Convert.ToString(i) +" "+ Convert.ToString(j);
                 }
             }
         }
