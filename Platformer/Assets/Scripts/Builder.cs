@@ -104,7 +104,7 @@ public class Builder : MonoBehaviour
             for (int j = 0; j < h + 2; j++)
                 greed[i, j] = "null"; //fill "null"
         for (int i = 1; i <= 3; i++)
-            for (int j = h - 2; j <= h - 1; j++)
+            for (int j = h; j >= h - 1; j--)
                 greed[i, j] = "Solid"; // 3x2 platform
         greed[2, h - 4] = "Character";
         #endregion
@@ -121,9 +121,9 @@ public class Builder : MonoBehaviour
                 }
             }
         }
-        for (int i = 1; i < a; i++)
+        for (int i = 1; i <= a; i++)
         {
-            for (int j = 1; j < h; j++)
+            for (int j = 1; j <= h; j++)
             {
                 if (greed[i, j] == "Platform")
                 {
@@ -197,7 +197,7 @@ public class Builder : MonoBehaviour
         }
         //Creating
         perx = cor[persx, persy, 0]; pery = cor[persx, persy, 0];
-        character.transform.position = new Vector3(cor[persx,persy,0], cor[persx, persy, 0],-1);
+        character.transform.position = new Vector3(perx, perx, -1);
         for (int i = 1; i <= a; i++)
         {
             for (int j = 1; j <= h; j++)
@@ -265,7 +265,7 @@ public class Builder : MonoBehaviour
                 {
                     Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
                     TextMesh text = debug.GetComponent<TextMesh>();
-                    text.text = greed[i, j] + " KO\nx-" + Convert.ToString(cor[i - 1, j - 1, 0]) +" y-"+ Convert.ToString(cor[i - 1, j - 1, 1]) + "\n" + Convert.ToString(i) +" "+ Convert.ToString(j);
+                    text.text = greed[i, j] + " KO\nx-" + cor[i - 1, j - 1, 0] +" y-"+ cor[i - 1, j - 1, 1] + "\n" + i +" "+ j;
                 }
             }
         }

@@ -85,9 +85,9 @@ TextMesh:
   m_GameObject: {fileID: 1516192770764924}
   m_Text: 'null KO
 
-    x-19 y-19
+    x-19 y-0
 
-    19 9'
+    20 10'
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
