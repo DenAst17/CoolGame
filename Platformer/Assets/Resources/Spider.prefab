@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   Impulse: 10
-  time: 10
+  time: 0
   difficult: 5
 --- !u!212 &212956392463203496
 SpriteRenderer:

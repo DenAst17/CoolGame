@@ -70,9 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fi: Right
   speed: 0.04
-  hi: 0
-  p: 2
   damage: 20
+  difficulty: 2
 --- !u!212 &212148823576780468
 SpriteRenderer:
   m_ObjectHideFlags: 1

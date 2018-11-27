@@ -9,7 +9,7 @@ public class Spider : MonoBehaviour {
     private float Impulse = 10;
     private bool dir = true;
     [SerializeField]
-    private float time = 10;
+    private float time = 0;
     [SerializeField]
     public int difficult = 2;
     private float n = 8;
