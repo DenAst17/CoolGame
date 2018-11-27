@@ -21,7 +21,6 @@ public class Builder : MonoBehaviour
     private int o = 70;//Процент земли на воде
     [SerializeField]
     private int n = 70;//Процент загруженности платформами
-    [SerializeField]
     private int difficult = 1;//Сложность уровня
     [SerializeField]
     private int hsolid = 20;//Максимальная высота земли
@@ -74,6 +73,7 @@ public class Builder : MonoBehaviour
     }
     private void Awake()
     {
+        difficult = Global.difficulty;
         switch (level)
         {
             case "Summer":
