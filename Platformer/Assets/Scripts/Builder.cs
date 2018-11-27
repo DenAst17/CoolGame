@@ -73,7 +73,6 @@ public class Builder : MonoBehaviour
     }
     private void Awake()
     {
-        System.Random rand = new System.Random();
         difficult = Global.difficulty;
         switch (level)
         {
@@ -112,27 +111,8 @@ public class Builder : MonoBehaviour
         int[] ar = new int[a + 2];
         for (int i = 0; i < a + 2; i++)
             ar[i] = 0;
-        ar[1] = 1;
-        ar[2] = 1;
-        ar[3] = 1;
         int n_zem = a * o * 70 / 100;
-        n_zem -= 3;
-        int s = 4;
-        int range;
-        while (s <= a)
-        {
-                int l;
-                l = rand.Next(2, 12);
-                for (int i = s; i <= Math.Min(s + l, a); i++)
-                    ar[i] = 1;
-                s += l;
-                n_zem -= l;
-            range = rand.Next(0, 8);
-            s += range;
-        }
-        for (int i = 0; i < a + 2; i++)
-            if(ar[i] == 1)
-                greed[i, h] = "Solid";
+
         #endregion
         //Symbols
         for (int i = 1; i < a; i++)

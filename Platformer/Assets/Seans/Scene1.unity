@@ -2286,6 +2286,7 @@ MonoBehaviour:
   a: 20
   o: 70
   n: 70
+  difficult: 1
   hsolid: 20
   secrets: 3
   coins: 10
