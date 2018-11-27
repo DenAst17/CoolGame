@@ -33,6 +33,7 @@ public class Builder : MonoBehaviour
     public static float pery = 0;
     #endregion
     #region Blocks
+    private GameObject Finish;
     private GameObject block_middle;
     private GameObject block_Left;
     private GameObject block_Left_Down;
@@ -54,8 +55,6 @@ public class Builder : MonoBehaviour
     #endregion
     void LevelvsSummer()
     {
-        Spider = Resources.Load("Spider") as GameObject;
-        FlyingSkelet = Resources.Load("Horn") as GameObject;
         Platform_3 = Resources.Load("SPlatform3") as GameObject;
         block_Down = Resources.Load("Sblock_D") as GameObject;
         block_Left = Resources.Load("Sblock_L") as GameObject;
@@ -71,8 +70,15 @@ public class Builder : MonoBehaviour
         block_Right_to_Up2 = Resources.Load("Sblock_R-Up") as GameObject;
         block_Up = Resources.Load("Sblock_M_Up") as GameObject;
     }
+    void Standart()
+    {
+        Finish = Resources.Load("Finish") as GameObject;
+        Spider = Resources.Load("Spider") as GameObject;
+        FlyingSkelet = Resources.Load("Horn") as GameObject;
+    }
     private void Awake()
     {
+        Standart();
         System.Random rand = new System.Random();
         difficult = Global.difficulty;
         switch (level)
@@ -108,7 +114,6 @@ public class Builder : MonoBehaviour
             for (int j = h - 1; j <= h; j++)
                 greed[i, j] = "Solid"; // 3x2 platform
         greed[2, h - 4] = "Character";
-        int x = h - 3, y = 3;
         int[] ar = new int[a + 2];
         for (int i = 0; i < a + 2; i++)
             ar[i] = 0;
@@ -172,6 +177,7 @@ public class Builder : MonoBehaviour
             }
         #endregion
         //Symbols
+        int finx = 0,finy = 0;
         for (int i = 1; i < a; i++)
         {
             for (int j = 1; j < h; j++)
@@ -180,6 +186,11 @@ public class Builder : MonoBehaviour
                 {
                     persx = i - 1;
                     persy = j - 1;
+                    greed[i, j] = "null";
+                } else if (greed[i, j] == "Finish")
+                {
+                    finx = i - 1;
+                    finy = j - 1;
                     greed[i, j] = "null";
                 }
             }
@@ -261,6 +272,8 @@ public class Builder : MonoBehaviour
         //Creating
         perx = cor[persx, persy, 0]; pery = cor[persx, persy, 0];
         character.transform.position = new Vector3(perx, perx, -1);
+        //Finish.transform.position = new Vector3(finx, finy, -1);
+        Instantiate(Finish, new Vector3(finx, finy, -1), transform.rotation);
         for (int i = 1; i <= a; i++)
         {
             for (int j = 1; j <= h; j++)
