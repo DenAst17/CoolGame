@@ -1841,7 +1841,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4786681363104012, guid: 2cdd059f852ce6344a055497b0934da3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4786681363104012, guid: 2cdd059f852ce6344a055497b0934da3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2286,8 +2286,6 @@ MonoBehaviour:
   a: 20
   o: 70
   n: 70
-  difficult: 1
-  hsolid: 20
   secrets: 3
   coins: 10
 --- !u!1 &1710668092

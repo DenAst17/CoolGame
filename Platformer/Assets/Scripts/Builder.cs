@@ -23,8 +23,6 @@ public class Builder : MonoBehaviour
     private int n = 70;//Процент загруженности платформами
     private int difficult = 1;//Сложность уровня
     [SerializeField]
-    private int hsolid = 20;//Максимальная высота земли
-    [SerializeField]
     private int secrets = 3;//Количество секретов
     [SerializeField]
     private int coins = 10;//Количество монет
