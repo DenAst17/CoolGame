@@ -51,9 +51,11 @@ public class Builder : MonoBehaviour
     #endregion
     #region Enemies
     private GameObject FlyingSkelet;
+    private GameObject Spider;
     #endregion
     void LevelvsSummer()
     {
+        Spider = Resources.Load("Spider") as GameObject;
         FlyingSkelet = Resources.Load("Horn") as GameObject;
         Platform_3 = Resources.Load("SPlatform3") as GameObject;
         block_Down = Resources.Load("Sblock_D") as GameObject;
