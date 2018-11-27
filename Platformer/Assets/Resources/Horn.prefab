@@ -68,11 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b5adead599e1841b5d33dddefc2afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
   fi: Right
   speed: 0.04
   hi: 0
-  p: 65
+  p: 2
   damage: 20
 --- !u!212 &212148823576780468
 SpriteRenderer:

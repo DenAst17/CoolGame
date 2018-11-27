@@ -31,10 +31,12 @@ public class Hero : MonoBehaviour {
     public static bool lop = false;
     public static Rigidbody2D rb;
     public static float diley = 0;
+    public static Transform tr;
     Animator anim;
     SpriteRenderer sp;
     private void Awake()
     {
+        tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         sp = GetComponentInChildren<SpriteRenderer>();
@@ -161,10 +163,6 @@ public class Hero : MonoBehaviour {
         promtime = t;
         lop = true;
         speed += power;
-    }
-    public static void takedamage(float imp)
-    {
-        rb.AddForce(Vector3.up * imp, ForceMode2D.Impulse);
     }
     private bool isGround()
     {

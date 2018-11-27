@@ -8,25 +8,29 @@ public class Horn : MonoBehaviour {
     [SerializeField]
     private string fi = "Right";
     [SerializeField]
-    private float speed = 3;
-    [SerializeField]
+    private float speed = 0.04f;
     private float hi = 0;
     [SerializeField]
-    private float p = 65;
-    [SerializeField]
     private float damage = 20;
-    private void OnCollisionEnter2D(Collision2D collision)
+    [SerializeField]
+    public int difficulty = 2;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
             Hero.heart -= damage;
-            Hero.takedamage(p);
         }
     }
     private void Awake()
     {
         sp = GetComponent<SpriteRenderer>();
         hi = UnityEngine.Random.Range(0,360);
+        damage = difficulty * 15;
+        if (difficulty == 1) speed = 0.04f;
+        if (difficulty == 2) speed = 0.045f;
+        if (difficulty == 3) speed = 0.05f;
+        if (difficulty == 4) speed = 0.055f;
+        if (difficulty == 5) speed = 0.06f;
     }
     void Update () {
         hi += UnityEngine.Random.Range(0.01f, 0.04f);

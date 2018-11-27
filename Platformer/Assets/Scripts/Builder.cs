@@ -30,6 +30,8 @@ public class Builder : MonoBehaviour
     [SerializeField]
     private int coins = 10;//Количество монет
     public static int moneys = 100;//Суммарная стоимость монет
+    public static float perx = 0;
+    public static float pery = 0;
     #endregion
     #region Blocks
     private GameObject block_middle;
@@ -52,6 +54,7 @@ public class Builder : MonoBehaviour
     #endregion
     void LevelvsSummer()
     {
+        FlyingSkelet = Resources.Load("Horn") as GameObject;
         Platform_3 = Resources.Load("SPlatform3") as GameObject;
         block_Down = Resources.Load("Sblock_D") as GameObject;
         block_Left = Resources.Load("Sblock_L") as GameObject;
@@ -202,6 +205,7 @@ public class Builder : MonoBehaviour
             }
         }
         //Creating
+        perx = cor[persx, persy, 0]; pery = cor[persx, persy, 0];
         character.transform.position = new Vector3(cor[persx,persy,0], cor[persx, persy, 0],-1);
         for (int i = 1; i <= a; i++)
         {
