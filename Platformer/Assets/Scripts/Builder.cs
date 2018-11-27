@@ -268,10 +268,20 @@ public class Builder : MonoBehaviour
             }
         }
         //Creating
-        perx = cor[persx, persy, 0]; pery = cor[persx, persy, 0];
+        for (int i = 1; i <= a; i++)
+        {
+            for (int j = 1; j <= h; j++)
+            {
+                if (greed[i, j] == "block_Right_Up")
+                {
+                    Instantiate(FlyingSkelet, new Vector3(cor[i - 1, j - 1, 0]-0.5f, cor[i - 1, j - 1, 1]+1.5f, 0), transform.rotation);
+                }
+            }
+        }
+                perx = cor[persx, persy, 0]; pery = cor[persx, persy, 0];
         character.transform.position = new Vector3(perx, perx, -1);
         //Finish.transform.position = new Vector3(finx, finy, -1);
-        Instantiate(Finish, new Vector3(finx, finy-1, -1), transform.rotation);
+        Instantiate(Finish, new Vector3(finx, finy-1, 0), transform.rotation);
         for (int i = 1; i <= a; i++)
         {
             for (int j = 1; j <= h; j++)
