@@ -4,18 +4,15 @@ using System;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Global : MonoBehaviour {
-    private Slider tg;
-    public static int difficulty = 1;
-    public static int deads = 0;
-
-    private void Awake()
+public class Close : MonoBehaviour {
+    Slider tg;
+    public void Closed()
     {
-        DontDestroyOnLoad(this.gameObject);
         if (FindObjectOfType<Slider>() && FindObjectOfType<Slider>().tag == "jo")
         {
             tg = FindObjectOfType<Slider>();
-            difficulty = Convert.ToInt32(tg.value);
+            Global.difficulty = Convert.ToInt32(tg.value);
         }
+        GameObject.Destroy(GameObject.FindGameObjectWithTag("Settings"));
     }
 }

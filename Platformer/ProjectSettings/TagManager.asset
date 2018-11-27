@@ -8,6 +8,8 @@ TagManager:
   - Heart
   - player
   - bullet
+  - jo
+  - Settings
   layers:
   - Default
   - TransparentFX
