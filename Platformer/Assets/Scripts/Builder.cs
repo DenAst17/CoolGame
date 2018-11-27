@@ -73,6 +73,7 @@ public class Builder : MonoBehaviour
     }
     private void Awake()
     {
+        System.Random rand = new System.Random();
         difficult = Global.difficulty;
         switch (level)
         {
@@ -111,8 +112,64 @@ public class Builder : MonoBehaviour
         int[] ar = new int[a + 2];
         for (int i = 0; i < a + 2; i++)
             ar[i] = 0;
+        ar[1] = 1;
+        ar[2] = 1;
+        ar[3] = 1;
         int n_zem = a * o * 70 / 100;
-
+        n_zem -= 3;
+        int s = 4;
+        int range;
+        while (s <= a && n_zem >= 0)
+        {
+            int l = 1000;
+            while (s + l > a)
+                l = rand.Next(2, 12);
+            for (int i = s; i <= Math.Min(s + l, a); i++)
+                ar[i] = 1;
+            s += l;
+            n_zem -= l;
+            range = rand.Next(0, 8);
+            s += range;
+        }
+        s = 4;
+        int per, r_h, r_w;
+        while (s <= a)
+            if (ar[s] == 1)
+            {
+                int begin = s, end = s;
+                while (ar[end] == 1)
+                    end++;
+                end--;
+                per = begin;
+                while (per <= end)
+                {
+                    r_h = rand.Next(1, 6);
+                    if (end - per < 2)
+                    {
+                        for (int i = per; i <= end; i++)
+                            ar[i] = ar[per - 1];
+                        break;
+                    }
+                    r_w = rand.Next(2, Math.Min(end - per, 8));
+                    for (int i = per; i < per + r_w; i++)
+                        ar[per] = r_h;
+                    per += r_w;
+                }
+            }
+            else
+                s++;
+        for (int i = 4; i <= a; i++)
+            if (ar[i] != ar[i - 1] && ar[i] != ar[i + 1] && ar[i] != 0)
+                ar[i] = ar[i - 1];
+        for (int i = 4; i <= a; i++)
+            for (int j = h; j > h - ar[i]; j--)
+                greed[i, j] = "Solid";
+        for (int i = a; i >= 4; i--)
+            if (ar[i] != 0)
+            {
+                greed[i, h - ar[i]] = "Finish";
+                break;
+            }
         #endregion
         //Symbols
         for (int i = 1; i < a; i++)
@@ -135,7 +192,7 @@ public class Builder : MonoBehaviour
                 {
                     greed[i, j] = "Platform3";
                 }
-                else if(greed[i, j] == "Solid")
+                else if (greed[i, j] == "Solid")
                 {
                     if (greed[i - 1, j] == "null")
                     {
@@ -271,7 +328,7 @@ public class Builder : MonoBehaviour
                 {
                     /*Instantiate(debug, new Vector3(cor[i - 1, j - 1, 0], cor[i - 1, j - 1, 1], 0), transform.rotation);
                     TextMesh text = debug.GetComponent<TextMesh>();
-                    text.text = greed[i, j] + " KO\nx-" + cor[i - 1, j - 1, 0] +" y-"+ cor[i - 1, j - 1, 1] + "\n" + i +" "+ j;*/
+                    text.text = greed[i, j] + " KO\nx-" + cor[i - 1, j - 1, 0] + " y-" + cor[i - 1, j - 1, 1] + "\n" + i + " " + j;*/
                 }
             }
         }
