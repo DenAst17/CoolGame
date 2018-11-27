@@ -271,7 +271,7 @@ public class Builder : MonoBehaviour
         perx = cor[persx, persy, 0]; pery = cor[persx, persy, 0];
         character.transform.position = new Vector3(perx, perx, -1);
         //Finish.transform.position = new Vector3(finx, finy, -1);
-        Instantiate(Finish, new Vector3(finx, finy, -1), transform.rotation);
+        Instantiate(Finish, new Vector3(finx, finy-1, -1), transform.rotation);
         for (int i = 1; i <= a; i++)
         {
             for (int j = 1; j <= h; j++)
