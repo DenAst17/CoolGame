@@ -10,6 +10,7 @@ TagManager:
   - bullet
   - jo
   - Settings
+  - Pause
   layers:
   - Default
   - TransparentFX

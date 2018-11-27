@@ -32,10 +32,12 @@ public class Hero : MonoBehaviour {
     public static Rigidbody2D rb;
     public static float diley = 0;
     public static Transform tr;
+    private GameObject set;
     Animator anim;
     SpriteRenderer sp;
     private void Awake()
     {
+        set = Resources.Load("Pause") as GameObject;
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
@@ -43,26 +45,21 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && SceneManager.GetActiveScene().buildIndex == 0)
+        if (heart <= 0)
         {
-            heart = 100f;
-            SceneManager.LoadSceneAsync(1);
+            heart = 100;
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
-        if (Input.GetKeyDown(KeyCode.Q) && SceneManager.GetActiveScene().buildIndex == 1)
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.FindGameObjectWithTag("Settings"))
         {
-            heart = 100f;
-            SceneManager.LoadSceneAsync(0);
+            Canvas ca = FindObjectOfType<Canvas>();
+            Instantiate(set, ca.transform);
         }
         if (diley > -10)diley -= Time.deltaTime;
         if (diley < 0) {
             if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) { bulletspeed += 0.7f; }
             if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
             if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
-        }
-        if (Input.GetKeyDown(KeyCode.R) || heart <= 0)
-        {
-            heart = 100f;
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         }
         if (Input.GetKeyDown(KeyCode.W)) {
             if (isGround() == true)

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class VisualLevelMenu : MonoBehaviour {
     public void BacktoMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("StartMenu");
     }
     public void Save()
     {
@@ -19,6 +19,6 @@ public class VisualLevelMenu : MonoBehaviour {
     }
     public void Contact()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Polygon");
     }
 }
