@@ -162,20 +162,24 @@ public class Builder : MonoBehaviour
             else
                 s++;
         for (int i = 4; i <= a; i++)
+        {
             if (ar[i] != ar[i - 1] && ar[i] != ar[i + 1] && ar[i] != 0)
                 ar[i] = ar[i - 1];
+            if (ar[i] == 1)
+                ar[i]++;
+        }
         for (int i = 4; i <= a; i++)
             for (int j = h; j > h - ar[i]; j--)
                 greed[i, j] = "Solid";
         for (int i = a; i >= 4; i--)
             if (ar[i] != 0)
             {
-                greed[i, h - ar[i]] = "Finish";
+                greed[i, ar[i] + 2] = "Finish";
                 break;
             }
         #endregion
         //Symbols
-        int finx = 0,finy = 0;
+        int finx = 0, finy = 0;
         for (int i = 1; i < a; i++)
         {
             for (int j = 1; j < h; j++)
