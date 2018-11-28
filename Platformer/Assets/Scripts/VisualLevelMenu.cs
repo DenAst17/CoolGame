@@ -13,10 +13,6 @@ public class VisualLevelMenu : MonoBehaviour {
     {
 
     }
-    public void Sound()
-    {
-
-    }
     public void Contact()
     {
         SceneManager.LoadScene("Polygon");
