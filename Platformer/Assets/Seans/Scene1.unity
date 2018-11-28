@@ -386,7 +386,7 @@ MonoBehaviour:
   debug: {fileID: 1516192770764924, guid: 7243d000433e64c47acdefe120d33481, type: 2}
   level: 1
   h: 20
-  a: 200
+  a: 100
   o: 70
   n: 70
   secrets: 3
