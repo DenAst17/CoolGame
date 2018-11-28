@@ -6,9 +6,12 @@ using UnityEngine;
 using System;
 
 public class StartMenuButtons : MonoBehaviour {
-    [SerializeField]
     GameObject set;
     Slider tg;
+    private void Awake()
+    {
+        set = Resources.Load("Settings") as GameObject;
+    }
     public void ButtonStart()
     {
         if (FindObjectOfType<Slider>() && FindObjectOfType<Slider>().tag == "jo")

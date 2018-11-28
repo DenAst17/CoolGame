@@ -48,9 +48,10 @@ public class Hero : MonoBehaviour {
         if (heart <= 0)
         {
             heart = 100;
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            heart = 100;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.FindGameObjectWithTag("Settings"))
+        if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.FindGameObjectWithTag("Pause"))
         {
             Canvas ca = FindObjectOfType<Canvas>();
             Instantiate(set, ca.transform);
