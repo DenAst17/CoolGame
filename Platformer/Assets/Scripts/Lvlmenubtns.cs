@@ -13,7 +13,7 @@ public class Lvlmenubtns : MonoBehaviour {
     }
     public void Scene1()
     {
-         SceneManager.LoadScene("Scene1");
+         SceneManager.LoadScene("Ch1_lvl1");
     }
     public void Scene2()
     {
