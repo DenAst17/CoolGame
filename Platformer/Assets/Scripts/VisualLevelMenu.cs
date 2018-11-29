@@ -13,6 +13,11 @@ public class VisualLevelMenu : MonoBehaviour {
     {
 
     }
+
+    public void Challenge()
+    {
+        SceneManager.LoadScene("Scene1");
+    }
     public void Contact()
     {
         SceneManager.LoadScene("Polygon");
