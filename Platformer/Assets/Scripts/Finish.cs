@@ -75,9 +75,9 @@ public class Finish : MonoBehaviour {
             star1.enabled = false;
             star2.enabled = false;
             star3.enabled = false;
-            if (Hero.heart >= 50) { star1.enabled = true; }
-            if (Hero.heart >= 90) { star2.enabled = true; }
-            if (Hero.heart >= 100) { star3.enabled = true; }
+            if (Hero.heart <= 100) { star1.enabled = true; }
+            if (Hero.heart >= 50) { star2.enabled = true; }
+            if (Hero.heart >= 90) { star3.enabled = true; }
             Hero.anim.SetInteger("State", 0);
         }
         else
