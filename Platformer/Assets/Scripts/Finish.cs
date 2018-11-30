@@ -67,10 +67,10 @@ public class Finish : MonoBehaviour {
             Bulletsused = bu.GetComponent<Text>();
             gs = GameObject.FindGameObjectWithTag("Globalscore");
             Globalscore = gs.GetComponent<Text>();
-            FoundCoins.text = "Found coins: " + Hero.coins;
-            Healthsaved.text = "Health saved: " + Hero.heart;
+            FoundCoins.text = "Found coins: " + Hero.coins + "/" + lp.StartCoins;
+            Healthsaved.text = "Health saved: " + Hero.heart + "/" + lp.StartHP;
             Damagetaken.text = "Damage taken: " + Hero.damtaken;
-            Bulletsused.text = "Bullets used: " + Hero.buluse;
+            Bulletsused.text = "Bullets used: " + Hero.buluse + "/";
             Globalscore.text = "Global score: 0";
             star1.enabled = false;
             star2.enabled = false;
