@@ -3328,6 +3328,16 @@ Prefab:
       propertyPath: StartPozition.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 114429530146743516, guid: 55fc367efe94c0e40a4af41f658e4da3,
+        type: 2}
+      propertyPath: NextLevel
+      value: Ch1_lvl2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114429530146743516, guid: 55fc367efe94c0e40a4af41f658e4da3,
+        type: 2}
+      propertyPath: FinishCoins
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55fc367efe94c0e40a4af41f658e4da3, type: 2}
   m_IsPrefabAsset: 0

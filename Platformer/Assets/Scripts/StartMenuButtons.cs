@@ -7,6 +7,7 @@ using System;
 
 public class StartMenuButtons : MonoBehaviour {
     GameObject set;
+    GameObject go;
     Slider tg;
     private void Awake()
     {
@@ -14,11 +15,10 @@ public class StartMenuButtons : MonoBehaviour {
     }
     public void ButtonStart()
     {
-        if (FindObjectOfType<Slider>() && FindObjectOfType<Slider>().tag == "jo")
-        {
-            tg = FindObjectOfType<Slider>();
-            Global.difficulty = Convert.ToInt32(tg.value);
-        }
+        go = GameObject.FindGameObjectWithTag("jo");
+        tg = go.GetComponent<Slider>();
+        if (go.tag == "jo")
+            Global.difficulty = Convert.ToInt32(tg.value); // YEAH!
         GameObject.Destroy(GameObject.FindGameObjectWithTag("Settings"));
         SceneManager.LoadScene("SelectLevel");
     }
@@ -28,6 +28,9 @@ public class StartMenuButtons : MonoBehaviour {
         {
             Canvas ca = FindObjectOfType<Canvas>();
             Instantiate(set,ca.transform);
+            go = GameObject.FindGameObjectWithTag("jo");
+            tg = go.GetComponent<Slider>();
+            tg.value = Global.difficulty;
         }
     }
     public void ButtonExit()

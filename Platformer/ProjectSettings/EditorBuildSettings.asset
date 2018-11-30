@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Seans/Ch1_lvl1.unity
     guid: d0f5da2a3e77ea347af5903eb6249834
+  - enabled: 1
+    path: Assets/Seans/Ch1_lvl2.unity
+    guid: 88f6f21ed767b69488045001e529d500
   m_configObjects: {}

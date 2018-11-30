@@ -23,14 +23,34 @@ public class Horn : MonoBehaviour {
     }
     private void Start()
     {
+        Debug.Log(Global.difficulty);
         difficulty = Global.difficulty;
         hi = UnityEngine.Random.Range(0, 360);
-        damage = difficulty * 15;
-        if (difficulty == 1) speed = 0.04f;
-        if (difficulty == 2) speed = 0.045f;
-        if (difficulty == 3) speed = 0.05f;
-        if (difficulty == 4) speed = 0.055f;
-        if (difficulty == 5) speed = 0.06f;
+        if (difficulty == 1)
+        {
+            speed = 0.04f;
+            damage = 25;
+        }
+        else if (difficulty == 2)
+        {
+            speed = 0.045f;
+            damage = 30;
+        }
+        else if (difficulty == 3)
+        {
+            speed = 0.05f;
+            damage = 35;
+        }
+        else if (difficulty == 4)
+        {
+            speed = 0.055f;
+            damage = 40;
+        }
+        else if (difficulty == 5)
+        {
+            speed = 0.06f;
+            damage = 45;
+        }
     }
     private void Awake()
     {

@@ -67,10 +67,18 @@ public class Finish : MonoBehaviour {
             Bulletsused = bu.GetComponent<Text>();
             gs = GameObject.FindGameObjectWithTag("Globalscore");
             Globalscore = gs.GetComponent<Text>();
-            FoundCoins.text = "Found coins: " + Hero.coins + "/" + lp.StartCoins;
+            FoundCoins.text = "Found coins: " + Hero.coins + "/" + lp.FinishCoins;
             Healthsaved.text = "Health saved: " + Hero.heart + "/" + lp.StartHP;
             Damagetaken.text = "Damage taken: " + Hero.damtaken;
-            Bulletsused.text = "Bullets used: " + Hero.buluse + "/";
+            switch(Global.difficulty)
+            {
+                case 1: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets1; break;
+                case 2: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets2; break;
+                case 3: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets3; break;
+                case 4: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets4; break;
+                case 5: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets5; break;
+                default: break;
+            }
             Globalscore.text = "Global score: 0";
             star1.enabled = false;
             star2.enabled = false;
@@ -79,6 +87,7 @@ public class Finish : MonoBehaviour {
             if (Hero.heart >= 50) { star2.enabled = true; }
             if (Hero.heart >= 90) { star3.enabled = true; }
             Hero.anim.SetInteger("State", 0);
+            Global.lvlsop[lp.ThisLevel + 1] = true;
         }
         else
         {

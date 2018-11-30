@@ -19,7 +19,7 @@ public class Lvlmenubtns : MonoBehaviour {
     {
         if (Global.lvlsop[1] == true)
         {
-            SceneManager.LoadScene("Scene2");
+            SceneManager.LoadScene("Ch1_lvl2");
         }
         else
         {
