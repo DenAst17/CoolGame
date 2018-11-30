@@ -14,11 +14,19 @@ public class Horn : MonoBehaviour {
     private int damage = 20;
     [SerializeField]
     public int difficulty = 2;
+    public float timestan = 5;
+    public float timem = 0;
+    Animator an;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "player")
+        if (collision.gameObject.tag == "player" && timem < 0)
         {
             Hero.HaveDamage(damage);
+        }
+        else if (collision.gameObject.tag == "bullet" && timem < 0)
+        {
+            GameObject.Destroy(collision.gameObject);
+            timem = timestan;
         }
     }
     private void Start()
@@ -30,41 +38,57 @@ public class Horn : MonoBehaviour {
         {
             speed = 0.04f;
             damage = 25;
+            timestan = 6;
         }
         else if (difficulty == 2)
         {
             speed = 0.045f;
             damage = 30;
+            timestan = 4.5f;
         }
         else if (difficulty == 3)
         {
             speed = 0.05f;
             damage = 35;
+            timestan = 4;
         }
         else if (difficulty == 4)
         {
             speed = 0.055f;
             damage = 40;
+            timestan = 3;
         }
         else if (difficulty == 5)
         {
             speed = 0.06f;
             damage = 45;
+            timestan = 2;
         }
     }
     private void Awake()
     {
         sp = GetComponent<SpriteRenderer>();
+        an = GetComponent<Animator>();
     }
     void Update () {
-        hi += UnityEngine.Random.Range(0.01f, 0.04f);
-        transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(hi * Math.PI * 1.5) / -100, transform.position.z);
-        if (fi == "Right")
+        if (timem < -1000) timem = -1;
+        timem -= Time.deltaTime;
+        if (timem < 0)
+        {
+            an.SetInteger("State", 0);
+            hi += UnityEngine.Random.Range(0.01f, 0.04f);
+            transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(hi * Math.PI * 1.5) / -100, transform.position.z);
+        }
+        else
+        {
+            an.SetInteger("State", 1);
+        }
+        if (fi == "Right" && timem < 0)
         {
             transform.position += Vector3.right * speed;
             sp.flipX = true;
         }
-        else
+        else if(timem < 0)
         {
             transform.position += Vector3.left * speed;
             sp.flipX = false;
