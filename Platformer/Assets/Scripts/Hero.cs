@@ -41,6 +41,7 @@ public class Hero : MonoBehaviour {
     SpriteRenderer sp;
     private void Start()
     {
+        win = false;
         damtaken = 0;
         buluse = 0;
     }
