@@ -21,6 +21,15 @@ TagManager:
   - VisualHP
   - Charge
   - BackCharge
+  - Star1
+  - Star2
+  - Star3
+  - FoundCoins
+  - Healthsaved
+  - Damagetaken
+  - Bulletsused
+  - Globalscore
+  - WinSheet
   layers:
   - Default
   - TransparentFX

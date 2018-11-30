@@ -6,7 +6,11 @@ public class LevelProporties : MonoBehaviour {
     [SerializeField]
     public Vector3 StartPozition;
     [SerializeField]
-    public int Level = 1;
+    public string ThisLevelName;
+    [SerializeField]
+    public int ThisLevel = 1;
+    [SerializeField]
+    public string NextLevel = "SelectLevel";
     [SerializeField]
     public int StartFields1 = 2;
     [SerializeField]

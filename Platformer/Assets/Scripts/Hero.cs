@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class Hero : MonoBehaviour {
     public static float heart = 100f;
     public static float speed = 300.0f;
-    public static bool win = false; 
+    public static bool win = false;
+    public static float damtaken = 0;
+    public static int buluse = 0;
     [SerializeField]
     public float angle = 0f;
     [SerializeField]
@@ -35,8 +37,13 @@ public class Hero : MonoBehaviour {
     public static float diley = 0;
     public static Transform tr;
     private GameObject set;
-    Animator anim;
+    public static Animator anim;
     SpriteRenderer sp;
+    private void Start()
+    {
+        damtaken = 0;
+        buluse = 0;
+    }
     private void Awake()
     {
         
@@ -66,7 +73,7 @@ public class Hero : MonoBehaviour {
             {
                 if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) { bulletspeed += 0.7f; }
                 if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
-                if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
+                if (Input.GetKeyUp(KeyCode.Space)) { Shoot();buluse++; }
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
@@ -120,10 +127,6 @@ public class Hero : MonoBehaviour {
                 }
             }
         }
-        else
-        {
-            GetComponent<Collider2D>().enabled = false;
-        }
     }
     public static void HaveDamage(int dam)
     {
@@ -131,6 +134,7 @@ public class Hero : MonoBehaviour {
             if (fields <= 0)
             {
                 heart -= dam;
+                damtaken += dam;
             }
             else
             {
@@ -140,7 +144,10 @@ public class Hero : MonoBehaviour {
     }
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed * Time.deltaTime, rb.velocity.y);
+        if (!win)
+        {
+            rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed * Time.deltaTime, rb.velocity.y);
+        }
     }
     void Jump()
     {
