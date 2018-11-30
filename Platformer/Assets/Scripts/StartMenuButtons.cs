@@ -15,11 +15,14 @@ public class StartMenuButtons : MonoBehaviour {
     }
     public void ButtonStart()
     {
-        go = GameObject.FindGameObjectWithTag("jo");
-        tg = go.GetComponent<Slider>();
-        if (go.tag == "jo")
-            Global.difficulty = Convert.ToInt32(tg.value); // YEAH!
-        GameObject.Destroy(GameObject.FindGameObjectWithTag("Settings"));
+        if (GameObject.FindGameObjectWithTag("jo"))
+        {
+            go = GameObject.FindGameObjectWithTag("jo");
+            tg = go.GetComponent<Slider>();
+            if (go.tag == "jo")
+                Global.difficulty = Convert.ToInt32(tg.value); // YEAH!
+            GameObject.Destroy(GameObject.FindGameObjectWithTag("Settings"));
+        }
         SceneManager.LoadScene("SelectLevel");
     }
     public void ButtonSettings()
