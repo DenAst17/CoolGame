@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Global : MonoBehaviour {
     private Slider tg;
-    public static int difficulty = 1;
+    public static int difficulty = 4;
     public static int deads = 0;
     public static bool[] lvlsop = new bool[16];
     public static int levelscomp = 0;
