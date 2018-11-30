@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Hero : MonoBehaviour {
     public static float heart = 100f;
     public static float speed = 300.0f;
+    public static bool win = false; 
     [SerializeField]
     public float angle = 0f;
     [SerializeField]
@@ -20,6 +21,7 @@ public class Hero : MonoBehaviour {
     private Rigidbody2D bulletgreen;
     [SerializeField]
     private Rigidbody2D bulletred;
+    public static int fields = 3;
     public static string colorbutton = "blue";
     public static int CoinsBoost = 1;
     public static float bulletspeed = 0f;
@@ -37,6 +39,7 @@ public class Hero : MonoBehaviour {
     SpriteRenderer sp;
     private void Awake()
     {
+        
         set = Resources.Load("Pause") as GameObject;
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
@@ -45,71 +48,93 @@ public class Hero : MonoBehaviour {
     }
     private void Update()
     {
-        if (heart <= 0)
+        if (!win)
         {
-            heart = 100;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            heart = 100;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.FindGameObjectWithTag("Pause"))
-        {
-            Canvas ca = FindObjectOfType<Canvas>();
-            Instantiate(set, ca.transform);
-        }
-        if (diley > -10)diley -= Time.deltaTime;
-        if (diley < 0) {
-            if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) { bulletspeed += 0.7f; }
-            if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
-            if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
-        }
-        if (Input.GetKeyDown(KeyCode.W)) {
-            if (isGround() == true)
+            if (heart <= 0)
             {
-                if (jumps < 2)
+                heart = 100;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                heart = 100;
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.FindGameObjectWithTag("Pause"))
+            {
+                Canvas ca = FindObjectOfType<Canvas>();
+                Instantiate(set, ca.transform);
+            }
+            if (diley > -10) diley -= Time.deltaTime;
+            if (diley < 0)
+            {
+                if (Input.GetKey(KeyCode.Space) && bulletspeed < 25) { bulletspeed += 0.7f; }
+                if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
+                if (Input.GetKeyUp(KeyCode.Space)) { Shoot(); }
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (isGround() == true)
                 {
+                    if (jumps < 2)
+                    {
+                        Jump();
+                        jumps++;
+                    }
+                }
+                else
+                {
+                    jumps = 0;
                     Jump();
                     jumps++;
                 }
             }
+            if (Input.GetAxis("Horizontal") == 0)
+            {
+                anim.SetInteger("State", 0);
+            }
             else
             {
-                jumps = 0;
-                Jump();
-                jumps++;
+                if (Input.GetAxis("Horizontal") < 0)
+                {
+                    sp.flipX = true;
+                }
+                else
+                {
+                    sp.flipX = false;
+                }
+                anim.SetInteger("State", 1);
             }
-        }
-        if (Input.GetAxis("Horizontal") == 0)
-        {
-            anim.SetInteger("State", 0);
+            if (rb.velocity.y > 0 && isGround() == true)
+            {
+                anim.SetInteger("State", 2);
+            }
+            else if (rb.velocity.y < 0 && isGround() == true)
+            {
+                anim.SetInteger("State", 3);
+            }
+            if (lop)
+            {
+                promtime -= Time.deltaTime;
+                if (promtime <= 0)
+                {
+                    promtime = 0;
+                    speed -= prom;
+                    lop = false;
+                }
+            }
         }
         else
         {
-            if (Input.GetAxis("Horizontal") < 0)
+            GetComponent<Collider2D>().enabled = false;
+        }
+    }
+    public static void HaveDamage(int dam)
+    {
+        if (!win) {
+            if (fields <= 0)
             {
-                sp.flipX = true;
+                heart -= dam;
             }
             else
             {
-                sp.flipX = false;
-            }
-            anim.SetInteger("State", 1);
-        }
-        if (rb.velocity.y > 0  && isGround() == true)
-        {
-            anim.SetInteger("State", 2);
-        }
-        else if (rb.velocity.y < 0  && isGround() == true)
-        {
-            anim.SetInteger("State", 3);
-        }
-        if (lop)
-        {
-            promtime -= Time.deltaTime;
-            if (promtime <= 0)
-            {
-                promtime = 0;
-                speed -= prom;
-                lop = false;
+                fields--;
             }
         }
     }

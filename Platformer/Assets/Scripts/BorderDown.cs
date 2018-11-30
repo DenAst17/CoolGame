@@ -10,6 +10,11 @@ public class BorderDown : MonoBehaviour {
         {
             Hero.tr.position = new Vector3(Builder.perx,Builder.pery,transform.position.z);
         }
+        else if (collision.gameObject.tag == "player" && FindObjectOfType<LevelProporties>())
+        {
+            LevelProporties tl = FindObjectOfType<LevelProporties>();
+            Hero.tr.position = tl.StartPozition;
+        }
         else if(collision.gameObject.tag == "player")
         {
             Hero.heart = 100f;

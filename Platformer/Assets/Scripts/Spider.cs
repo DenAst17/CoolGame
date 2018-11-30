@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spider : MonoBehaviour {
     [SerializeField]
-    private float damage = 20;
+    private int damage = 20;
     [SerializeField]
     private float Impulse = 10;
     private bool dir = true;
@@ -12,18 +12,25 @@ public class Spider : MonoBehaviour {
     private float time = 0;
     [SerializeField]
     public int difficult = 2;
+    [SerializeField]
     private float n = 8;
+    [SerializeField]
+
     private float m = 15;
     Rigidbody2D rb;
+    private void Start()
+    {
+        difficult = Global.difficulty;
+        damage = difficult * 5;
+        if (difficult == 1) { n = 6; m = 9; Impulse = 15; }
+        if (difficult == 2) { n = 5; m = 8; Impulse = 17; }
+        if (difficult == 3) { n = 4; m = 7; Impulse = 19; }
+        if (difficult == 4) { n = 3; m = 6; Impulse = 21; }
+        if (difficult == 5) { n = 2; m = 5; Impulse = 26; }
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        damage = difficult * 10;
-        if (difficult == 1) { n = 10; m = 20; Impulse = 10; }
-        if (difficult == 2) { n = 10; m = 16; Impulse = 12; }
-        if (difficult == 3) { n = 8; m = 14; Impulse = 14; }
-        if (difficult == 4) { n = 7; m = 12; Impulse = 16; }
-        if (difficult == 5) { n = 5; m = 10; Impulse = 20; }
     }
     private void Update()
     {
@@ -31,22 +38,14 @@ public class Spider : MonoBehaviour {
         if (time <= 0)
         {
             time = Random.Range(n,m);
-            if (dir)
-            {
-                rb.AddForce(Vector2.right * Impulse, ForceMode2D.Impulse);
-            }
-            else
-            {
-                rb.AddForce(Vector2.left * Impulse, ForceMode2D.Impulse);
-            }
-            dir = Random.Range(1, 3) > 2 ? true : false; 
+            rb.AddForce(new Vector2((Random.value + 0.2f) * Random.Range(-1,1), Random.value+ 0.2f * Random.Range(-1, 1)) * Impulse, ForceMode2D.Impulse);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
-            Hero.heart -= damage;
+            Hero.HaveDamage(damage);
         }
     }
 }

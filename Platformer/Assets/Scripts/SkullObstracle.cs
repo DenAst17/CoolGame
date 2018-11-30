@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SkullObstracle : MonoBehaviour {
     [SerializeField]
-    private float damage = 20;
+    private int damage = 20;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "player")
         {
-            Hero.heart -= damage;
+            Hero.HaveDamage(damage);
         }
     }
 }
