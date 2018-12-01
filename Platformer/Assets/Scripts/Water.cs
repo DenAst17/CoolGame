@@ -8,8 +8,6 @@ public class Water : MonoBehaviour {
     private float speed = 2;
     [SerializeField]
     private int border = 4;
-    [SerializeField]
-    private Vector3 dir;
     private void Update()
     {
         Transform Tt = GetComponent<Transform>();

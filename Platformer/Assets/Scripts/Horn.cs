@@ -31,7 +31,6 @@ public class Horn : MonoBehaviour {
     }
     private void Start()
     {
-        Debug.Log(Global.difficulty);
         difficulty = Global.difficulty;
         hi = UnityEngine.Random.Range(0, 360);
         if (difficulty == 1)

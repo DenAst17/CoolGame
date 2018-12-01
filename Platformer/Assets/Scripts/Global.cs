@@ -10,6 +10,7 @@ public class Global : MonoBehaviour {
     public static int deads = 0;
     public static bool[] lvlsop = new bool[16];
     public static int levelscomp = 0;
+    public static bool Respawns = true;
     private void Awake()
     {
         lvlsop[0] = true;

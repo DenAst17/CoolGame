@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LevelProporties : MonoBehaviour {
     [SerializeField]
-    public Vector3 StartPozition;
-    [SerializeField]
     public string ThisLevelName;
     [SerializeField]
     public int ThisLevel = 1;

@@ -13,7 +13,17 @@ public class BorderDown : MonoBehaviour {
         else if (collision.gameObject.tag == "player" && FindObjectOfType<LevelProporties>())
         {
             LevelProporties tl = FindObjectOfType<LevelProporties>();
-            Hero.tr.position = tl.StartPozition;
+            ControlPoz[] cp = FindObjectsOfType<ControlPoz>();
+            int max = 0;
+            for (int i = 0; i < cp.Length; i++)
+            {
+                if (max<=cp[i].serialnumber && cp[i].open) { max = cp[i].serialnumber; }
+            }
+            for (int i = 0; i < cp.Length; i++)
+            {
+                if (max == cp[i].serialnumber) { Hero.tr.position = cp[i].mt.position; break; }
+            }
+            //Hero.tr.position = tl.StartPozition;
         }
         else if(collision.gameObject.tag == "player")
         {
