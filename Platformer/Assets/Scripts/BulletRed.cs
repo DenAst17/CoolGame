@@ -5,6 +5,6 @@ using UnityEngine;
 public class BulletRed : MonoBehaviour {
     public int damage = 20;
     void Start () {
-        Destroy(this.gameObject, 20);
+        Destroy(this.gameObject, 10);
 	}
 }
