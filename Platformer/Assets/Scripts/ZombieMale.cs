@@ -23,6 +23,32 @@ public class ZombieMale : MonoBehaviour {
         sp = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
     }
+    private void Start()
+    {
+        switch (Global.difficulty)
+        {
+            case 1:
+                speed = 0;
+                hp = 10;
+                damage = 6;
+                break;
+            case 2:
+                damage = 7;
+                break;
+            case 3:
+                damage = 9;
+                break;
+            case 4:
+                damage = 10;
+                break;
+            case 5:
+                damage = 12;
+                break;
+            default:
+                damage = 8;
+                break;
+        }
+    }
     private void Update()
     {
         if (hp <= 0) dead = true;
