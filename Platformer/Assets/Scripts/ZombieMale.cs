@@ -6,45 +6,70 @@ public class ZombieMale : MonoBehaviour {
     private Rigidbody2D rb;
     private SpriteRenderer sp;
     private Animator anim;
+    private CapsuleCollider2D cl;
     private string fi = "Left";
     private float speed = 0.04f;
+    private bool attack = false;
+    private int damage = 20;
+    [SerializeField]
+    private bool FastZombie = true;
+    [SerializeField]
+    private float hp = 60;
+    private bool dead = false;
     private void Awake()
     {
+        cl = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
     }
     private void Update()
     {
-        anim.SetInteger("State", 1);
-        if (fi == "Right")
+        if (hp <= 0) dead = true;
+        if (!dead)
         {
-            transform.position += Vector3.right * speed;
-            sp.flipX = false;
-        }
-        else
-        {
-            transform.position += Vector3.left * speed;
-            sp.flipX = true;
-        }
-        if (fi == "Right")
-        {
-            if (Rightup() == true || Rightdown() == false)
+            cl.enabled = true;
+            if (!attack)
             {
-                fi = "Left";
+                anim.SetInteger("State", 1);
+                if (fi == "Right")
+                {
+                    transform.position += Vector3.right * speed;
+                    sp.flipX = false;
+                }
+                else
+                {
+                    transform.position += Vector3.left * speed;
+                    sp.flipX = true;
+                }
+            }
+            else
+            {
+                anim.SetInteger("State", 2);
+            }
+            if (fi == "Right")
+            {
+                if (Rightup() == true || Rightdown() == false)
+                {
+                    fi = "Left";
+                }
+            }
+            else
+            {
+                if (Leftup() == true || Leftdown() == false)
+                {
+                    fi = "Right";
+                }
             }
         }
         else
         {
-            if (Leftup() == true || Leftdown() == false)
-            {
-                fi = "Right";
-            }
+            anim.SetInteger("State", 3);
         }
     }
     private bool Rightup()
     {
-        int j = 0;
+        int j = 0, k = 0; 
         Vector2 kol = transform.position; kol.x += 0.5f;
         Vector2 dol; dol.x = 0.7f; dol.y = 0.2f;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(kol, 0.2f);
@@ -54,7 +79,13 @@ public class ZombieMale : MonoBehaviour {
             {
                 j++;
             }
+            else if (colliders[i].gameObject.tag == "player")
+            {
+                k++;
+            }
         }
+        if (k >= 1) { attack = true; } else { attack = false; }
+        k = 0;
         if (j > 0)
         {
             return true;
@@ -66,7 +97,7 @@ public class ZombieMale : MonoBehaviour {
     }
     private bool Leftup()
     {
-        int j = 0;
+        int j = 0, k = 0;
         Vector2 kol = transform.position; kol.x -= 0.5f;
         Vector2 dol; dol.x = 0.7f; dol.y = 0.2f;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(kol, 0.2f);
@@ -76,7 +107,13 @@ public class ZombieMale : MonoBehaviour {
             {
                 j++;
             }
+            else if (colliders[i].gameObject.tag == "player")
+            {
+                k++;
+            }
         }
+        if (k >= 1) { attack = true; } else { attack = false; }
+        k = 0;
         if (j > 0)
         {
             return true;
@@ -129,5 +166,41 @@ public class ZombieMale : MonoBehaviour {
         {
             return false;
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!dead) {
+            if (collision.gameObject.tag == "player")
+            {
+                Hero.HaveDamage(damage);
+            }
+            else if (collision.gameObject.tag == "bullet")
+            {
+                if (collision.gameObject.name == "BulletBlue(Clone)")
+                {
+                    BulletBlue bb = collision.gameObject.GetComponent<BulletBlue>();
+                    hp -= bb.damage;
+                }
+                else if (collision.gameObject.name == "BulletGreen(Clone)")
+                {
+                    BulletGreen bb = collision.gameObject.GetComponent<BulletGreen>();
+                    hp -= bb.damage;
+                }
+                else if (collision.gameObject.name == "BulletRed(Clone)")
+                {
+                    BulletRed bb = collision.gameObject.GetComponent<BulletRed>();
+                    hp -= bb.damage;
+                }
+                GameObject.Destroy(collision.gameObject);
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
     }
 }

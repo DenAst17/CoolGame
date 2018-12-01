@@ -87,7 +87,7 @@ public class Finish : MonoBehaviour {
             if (Hero.heart >= 50) { star2.enabled = true; }
             if (Hero.heart >= 90) { star3.enabled = true; }
             Hero.anim.SetInteger("State", 0);
-            Global.lvlsop[lp.ThisLevel + 1] = true;
+            Global.lvlsop[lp.ThisLevel] = true;
         }
         else
         {

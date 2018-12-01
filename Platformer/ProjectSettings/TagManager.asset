@@ -30,6 +30,7 @@ TagManager:
   - Bulletsused
   - Globalscore
   - WinSheet
+  - Zombie
   layers:
   - Default
   - TransparentFX

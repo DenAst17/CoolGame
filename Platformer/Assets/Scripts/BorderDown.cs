@@ -18,7 +18,11 @@ public class BorderDown : MonoBehaviour {
         else if(collision.gameObject.tag == "player")
         {
             Hero.heart = 100f;
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else if (collision.gameObject.tag == "Zombie")
+        {
+            GameObject.Destroy(collision.gameObject);
         }
     }
 }
