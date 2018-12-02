@@ -15,6 +15,7 @@ public class Coin : MonoBehaviour {
     {
         if (collision.gameObject.tag == "player")
         {
+            Global.coinsplus+= cost * Hero.CoinsBoost;
             Hero.coins += cost*Hero.CoinsBoost;
             Destroy(this.gameObject);
         }

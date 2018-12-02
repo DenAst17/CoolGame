@@ -8,10 +8,12 @@ public class BorderDown : MonoBehaviour {
     {
         if (collision.gameObject.tag == "player" && FindObjectOfType<Builder>())
         {
+            Global.respawns++;
             Hero.tr.position = new Vector3(Builder.perx,Builder.pery,transform.position.z);
         }
         else if (collision.gameObject.tag == "player" && FindObjectOfType<LevelProporties>())
         {
+            Global.respawns++;
             LevelProporties tl = FindObjectOfType<LevelProporties>();
             ControlPoz[] cp = FindObjectsOfType<ControlPoz>();
             int max = 0;
@@ -23,10 +25,10 @@ public class BorderDown : MonoBehaviour {
             {
                 if (max == cp[i].serialnumber) { Hero.tr.position = cp[i].mt.position; break; }
             }
-            //Hero.tr.position = tl.StartPozition;
         }
         else if(collision.gameObject.tag == "player")
         {
+            Global.respawns++;
             Hero.heart = 100f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

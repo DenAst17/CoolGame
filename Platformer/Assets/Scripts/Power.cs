@@ -16,6 +16,7 @@ public class Power : MonoBehaviour {
     {
         if (collision.gameObject.tag == "player")
         {
+            Global.bustersplus++;
             Hero.Power(t,power);
             Destroy(this.gameObject);
         }

@@ -14,6 +14,7 @@ public class Field : MonoBehaviour {
     {
         if (collision.gameObject.tag == "player")
         {
+            Global.fieldsplus++;
             if (Hero.fields + fieldspl >= 5)
             {
                 Hero.fields = 5;

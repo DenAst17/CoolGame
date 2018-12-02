@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     {
         if (collision.gameObject.tag == "player")
         {
+            Global.hpplus++;
             if (Hero.heart + healthup >= 100)
             {
                 Hero.heart = 100;
@@ -27,6 +28,7 @@ public class Health : MonoBehaviour
         }
         else if (collision.gameObject.tag == "bullet")
         {
+            Global.hpplus++;
             if (Hero.heart + healthup/2 >= 100)
             {
                 Hero.heart = 100;

@@ -61,7 +61,7 @@ public class ZombieMale : MonoBehaviour {
     }
     private void Update()
     {
-        if (hp <= 0) dead = true;
+        if (hp <= 0) { dead = true; Global.monsterskill++; }
         if (!dead)
         {
             cl.enabled = true;

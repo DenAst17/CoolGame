@@ -39,6 +39,7 @@ public class Finish : MonoBehaviour {
     GameObject gs;
     [SerializeField]
     Text Globalscore;
+    private int score = 0;
     private void Awake()
     {
         finish = Resources.Load("WinSheet") as GameObject;
@@ -79,7 +80,7 @@ public class Finish : MonoBehaviour {
                 case 5: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets5; break;
                 default: break;
             }
-            Globalscore.text = "Global score: 0";
+            Globalscore.text = "Global score: " + score;
             star1.enabled = false;
             star2.enabled = false;
             star3.enabled = false;
@@ -88,6 +89,8 @@ public class Finish : MonoBehaviour {
             if (Hero.heart >= 90) { star3.enabled = true; }
             Hero.anim.SetInteger("State", 0);
             Global.lvlsop[lp.ThisLevel] = true;
+            Global.levelsfinished++;
+            Global.globalscore += score;
         }
         else
         {
