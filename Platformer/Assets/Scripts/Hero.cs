@@ -77,7 +77,7 @@ public class Hero : MonoBehaviour {
                 if (Input.GetKey(KeyCode.Space) && angle < 45) { angle += 0.4f; };
                 if (Input.GetKeyUp(KeyCode.Space) && bullets >= 0) { Shoot();buluse++;Global.shoots++; }
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (isGround() == true)
                 {
