@@ -7,6 +7,8 @@ public class TakeDMG : MonoBehaviour {
     public bool take = false;
     public bool fall = false;
     Animator an;
+    [SerializeField]
+    GameObject des;
     private void Awake()
     {
         an = GetComponent<Animator>();
@@ -44,7 +46,7 @@ public class TakeDMG : MonoBehaviour {
         }
         if (fall)
         {
-            GameObject.Destroy(GetComponentInParent<GameObject>());
+            GameObject.Destroy(des);
             fall = false;
         }
     }
