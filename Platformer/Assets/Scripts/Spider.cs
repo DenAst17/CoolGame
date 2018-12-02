@@ -24,27 +24,27 @@ public class Spider : MonoBehaviour {
         if (difficult == 1)
         {
             n = 6; m = 9; Impulse = 15;
-            damage = 15;
+            damage = 10;
         }
         else if (difficult == 2)
         {
             n = 5; m = 8; Impulse = 17;
-            damage = 18;
+            damage = 15;
         }
         else if (difficult == 3)
         {
             n = 4; m = 7; Impulse = 19;
-            damage = 21;
+            damage = 18;
         }
         else if (difficult == 4)
         {
             n = 3; m = 6; Impulse = 21;
-            damage = 24;
+            damage = 21;
         }
         else if (difficult == 5)
         {
             n = 2; m = 5; Impulse = 26;
-            damage = 30;
+            damage = 25;
         }
     }
     private void Awake()

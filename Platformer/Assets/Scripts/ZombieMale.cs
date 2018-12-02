@@ -33,22 +33,22 @@ public class ZombieMale : MonoBehaviour {
                 damage = 6;
                 break;
             case 2:
-                speed = 0.032f;
+                speed = 0.03f;
                 hp = 20;
                 damage = 7;
                 break;
             case 3:
-                speed = 0.038f;
+                speed = 0.035f;
                 hp = 30;
                 damage = 9;
                 break;
             case 4:
-                speed = 0.045f;
+                speed = 0.04f;
                 hp = 40;
                 damage = 10;
                 break;
             case 5:
-                speed = 0.05f;
+                speed = 0.045f;
                 hp = 50;
                 damage = 12;
                 break;

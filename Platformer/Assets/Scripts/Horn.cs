@@ -36,31 +36,31 @@ public class Horn : MonoBehaviour {
         if (difficulty == 1)
         {
             speed = 0.04f;
-            damage = 25;
+            damage = 10;
             timestan = 6;
         }
         else if (difficulty == 2)
         {
             speed = 0.045f;
-            damage = 30;
+            damage = 15;
             timestan = 4.5f;
         }
         else if (difficulty == 3)
         {
             speed = 0.05f;
-            damage = 35;
+            damage = 20;
             timestan = 4;
         }
         else if (difficulty == 4)
         {
             speed = 0.055f;
-            damage = 40;
+            damage = 25;
             timestan = 3;
         }
         else if (difficulty == 5)
         {
             speed = 0.06f;
-            damage = 45;
+            damage = 30;
             timestan = 2;
         }
     }
