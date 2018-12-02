@@ -28,24 +28,34 @@ public class ZombieMale : MonoBehaviour {
         switch (Global.difficulty)
         {
             case 1:
-                speed = 0;
+                speed = 0.025f;
                 hp = 10;
                 damage = 6;
                 break;
             case 2:
+                speed = 0.032f;
+                hp = 20;
                 damage = 7;
                 break;
             case 3:
+                speed = 0.038f;
+                hp = 30;
                 damage = 9;
                 break;
             case 4:
+                speed = 0.045f;
+                hp = 40;
                 damage = 10;
                 break;
             case 5:
+                speed = 0.05f;
+                hp = 50;
                 damage = 12;
                 break;
             default:
-                damage = 8;
+                speed = 0.06f;
+                hp = 75;
+                damage = 15;
                 break;
         }
     }
