@@ -20,7 +20,7 @@ public class StartMenuButtons : MonoBehaviour {
             go = GameObject.FindGameObjectWithTag("jo");
             tg = go.GetComponent<Slider>();
             if (go.tag == "jo")
-                Global.difficulty = Convert.ToInt32(tg.value); // YEAH!
+            { Global.difficulty = Convert.ToInt32(tg.value); }
             GameObject.Destroy(GameObject.FindGameObjectWithTag("Settings"));
         }
         SceneManager.LoadScene("SelectLevel");

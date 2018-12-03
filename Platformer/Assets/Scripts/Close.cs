@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class Close : MonoBehaviour {
     Slider tg;
+    GameObject go;
     public void Closed()
     {
-        if (FindObjectOfType<Slider>() && FindObjectOfType<Slider>().tag == "jo")
+        if (GameObject.FindGameObjectWithTag("jo"))
         {
-            tg = FindObjectOfType<Slider>();
-            Global.difficulty = Convert.ToInt32(tg.value);
+            go = GameObject.FindGameObjectWithTag("jo");
+            tg = go.GetComponent<Slider>();
+            if (go.tag == "jo")
+            {
+                Global.difficulty = Convert.ToInt32(tg.value);
+            }
         }
         GameObject.Destroy(GameObject.FindGameObjectWithTag("Settings"));
     }

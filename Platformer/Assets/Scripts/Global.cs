@@ -31,4 +31,8 @@ public class Global : MonoBehaviour {
             difficulty = Convert.ToInt32(tg.value);
         }
     }
+    private void Update()
+    {
+        Debug.Log(difficulty);
+    }
 }
