@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialnumber: 1
   open: 0
-  mt: {fileID: 0}
+  mt: {fileID: 4246162193079480}
 --- !u!212 &212644575334354338
 SpriteRenderer:
   m_ObjectHideFlags: 1
