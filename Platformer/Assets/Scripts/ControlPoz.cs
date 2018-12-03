@@ -15,7 +15,6 @@ public class ControlPoz : MonoBehaviour {
     }
     private void Awake()
     {
-        mt = GetComponent<Transform>();
         if (serialnumber != 0 && !Global.Respawns) { GameObject.Destroy(this.gameObject); }
     }
 }
