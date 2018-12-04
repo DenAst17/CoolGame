@@ -7,9 +7,14 @@ public class Health : MonoBehaviour
 {
     [SerializeField]
     private float healthup = 25;
+    private float time = 0.016f;
     private void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(Time.time * Math.PI * 1.5) / -100, transform.position.z);
+        if (Time.timeScale != 0)
+        {
+            time += 0.0155f;
+            transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(time * Math.PI * 1.5) / -100, transform.position.z);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

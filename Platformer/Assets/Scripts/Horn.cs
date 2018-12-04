@@ -78,7 +78,7 @@ public class Horn : MonoBehaviour {
             if (timem < 0)
             {
                 an.SetInteger("State", 0);
-                hi += UnityEngine.Random.Range(0.01f, 0.04f);
+                hi += 0.0255f;
                 transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(hi * Math.PI * 1.5) / -100, transform.position.z);
             }
             else
