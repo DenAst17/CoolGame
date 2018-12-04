@@ -61,46 +61,49 @@ public class ZombieMale : MonoBehaviour {
     }
     private void Update()
     {
-        if (hp <= 0) { dead = true; Global.monsterskill++; }
-        if (!dead)
+        if (Time.timeScale != 0)
         {
-            cl.enabled = true;
-            if (!attack)
+            if (hp <= 0) { dead = true; Global.monsterskill++; }
+            if (!dead)
             {
-                anim.SetInteger("State", 1);
-                if (fi == "Right")
+                cl.enabled = true;
+                if (!attack)
                 {
-                    transform.position += Vector3.right * speed;
-                    sp.flipX = false;
+                    anim.SetInteger("State", 1);
+                    if (fi == "Right")
+                    {
+                        transform.position += Vector3.right * speed;
+                        sp.flipX = false;
+                    }
+                    else
+                    {
+                        transform.position += Vector3.left * speed;
+                        sp.flipX = true;
+                    }
                 }
                 else
                 {
-                    transform.position += Vector3.left * speed;
-                    sp.flipX = true;
+                    anim.SetInteger("State", 2);
+                }
+                if (fi == "Right")
+                {
+                    if (Rightup() == true || Rightdown() == false)
+                    {
+                        fi = "Left";
+                    }
+                }
+                else
+                {
+                    if (Leftup() == true || Leftdown() == false)
+                    {
+                        fi = "Right";
+                    }
                 }
             }
             else
             {
-                anim.SetInteger("State", 2);
+                anim.SetInteger("State", 3);
             }
-            if (fi == "Right")
-            {
-                if (Rightup() == true || Rightdown() == false)
-                {
-                    fi = "Left";
-                }
-            }
-            else
-            {
-                if (Leftup() == true || Leftdown() == false)
-                {
-                    fi = "Right";
-                }
-            }
-        }
-        else
-        {
-            anim.SetInteger("State", 3);
         }
     }
     private bool Rightup()

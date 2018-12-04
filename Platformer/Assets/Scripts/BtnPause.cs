@@ -12,6 +12,7 @@ public class BtnPause : MonoBehaviour {
     {
         if (!GameObject.FindGameObjectWithTag("Pause"))
         {
+            Time.timeScale = 0;
             Canvas ca = FindObjectOfType<Canvas>();
             Instantiate(set, ca.transform);
         }

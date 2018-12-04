@@ -7,6 +7,7 @@ public class Pauze : MonoBehaviour {
 
     public void Continue()
     {
+        Time.timeScale = 1;
         GameObject.Destroy(GameObject.FindGameObjectWithTag("Pause"));
     }
     public void Restart()

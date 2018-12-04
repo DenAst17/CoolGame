@@ -69,41 +69,45 @@ public class Horn : MonoBehaviour {
         sp = GetComponent<SpriteRenderer>();
         an = GetComponent<Animator>();
     }
-    void Update () {
-        if (timem < -1000) timem = -1;
-        timem -= Time.deltaTime;
-        if (timem < 0)
-        {
-            an.SetInteger("State", 0);
-            hi += UnityEngine.Random.Range(0.01f, 0.04f);
-            transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(hi * Math.PI * 1.5) / -100, transform.position.z);
-        }
-        else
-        {
-            an.SetInteger("State", 1);
-        }
-        if (fi == "Right" && timem < 0)
-        {
-            transform.position += Vector3.right * speed;
-            sp.flipX = true;
-        }
-        else if(timem < 0)
-        {
-            transform.position += Vector3.left * speed;
-            sp.flipX = false;
-        }
-        if (fi == "Right")
-        {
-            if (Rightup() == true || Rightdown() == false)
+    void Update() {
+        if (Time.timeScale != 0) {
+            if (timem > -10)
             {
-                fi = "Left";
+                timem -= Time.deltaTime;
             }
-        }
-        else
-        {
-            if (Leftup() == true || Leftdown() == false)
+            if (timem < 0)
             {
-                fi = "Right";
+                an.SetInteger("State", 0);
+                hi += UnityEngine.Random.Range(0.01f, 0.04f);
+                transform.position = new Vector3(transform.position.x, transform.position.y + (float)Math.Sin(hi * Math.PI * 1.5) / -100, transform.position.z);
+            }
+            else
+            {
+                an.SetInteger("State", 1);
+            }
+            if (fi == "Right" && timem < 0)
+            {
+                transform.position += Vector3.right * speed;
+                sp.flipX = true;
+            }
+            else if (timem < 0)
+            {
+                transform.position += Vector3.left * speed;
+                sp.flipX = false;
+            }
+            if (fi == "Right")
+            {
+                if (Rightup() == true || Rightdown() == false)
+                {
+                    fi = "Left";
+                }
+            }
+            else
+            {
+                if (Leftup() == true || Leftdown() == false)
+                {
+                    fi = "Right";
+                }
             }
         }
     }
