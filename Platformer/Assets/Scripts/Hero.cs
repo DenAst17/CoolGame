@@ -69,13 +69,19 @@ public class Hero : MonoBehaviour {
             }
             if (Input.GetKeyDown(KeyCode.Escape) && !GameObject.FindGameObjectWithTag("Pause"))
             {
+                Time.timeScale = 0;
                 Canvas ca = FindObjectOfType<Canvas>();
                 Instantiate(set, ca.transform);
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape) && GameObject.FindGameObjectWithTag("Pause"))
+            {
+                Time.timeScale = 1;
+                Destroy(GameObject.FindGameObjectWithTag("Pause"));
             }
             if (diley > -10) diley -= Time.deltaTime;
             if (diley < 0)
             {
-                if (Input.GetKey(KeyCode.Space) && bulletspeed < 25 && bullets > 0) { bulletspeed += 0.7f; }
+                if (Input.GetKey(KeyCode.Space) && bulletspeed < 25 && bullets > 0 ) { bulletspeed += 0.7f; }
                 if (Input.GetKey(KeyCode.Space) && angle < 45 && bullets > 0) { angle += 0.4f; };
                 if (Input.GetKeyUp(KeyCode.Space) && bullets > 0)
                 {

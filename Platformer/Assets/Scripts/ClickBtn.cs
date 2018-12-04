@@ -19,12 +19,4 @@ public class ClickBtn : MonoBehaviour {
         if (gameObject.GetComponent<Toggle>().isOn == true)
             Hero.colorbutton = "red";
     }
-    public void MoneysPlus()
-    {
-        Hero.coins += 5;
-    }
-    public void BulletsPlus()
-    {
-        Hero.bullets += 5;
-    }
 }
