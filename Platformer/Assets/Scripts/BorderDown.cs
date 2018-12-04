@@ -23,7 +23,7 @@ public class BorderDown : MonoBehaviour {
             }
             for (int i = 0; i < cp.Length; i++)
             {
-                if (max == cp[i].serialnumber) { Hero.tr.position = cp[i].mt.position; break; }
+                if (max == cp[i].serialnumber) { Hero.tr.position = cp[i].mt; break; }
             }
         }
         else if(collision.gameObject.tag == "player")

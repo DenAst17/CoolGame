@@ -16,7 +16,7 @@ public class VisualLevelMenu : MonoBehaviour {
 
     public void Challenge()
     {
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("Training_lvl");
     }
     public void Contact()
     {

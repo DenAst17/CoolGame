@@ -1431,7 +1431,7 @@ GameObject:
   - component: {fileID: 663743945}
   - component: {fileID: 663743944}
   m_Layer: 5
-  m_Name: Chalange
+  m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3404,7 +3404,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Challenge
+  m_Text: Tutorial
 --- !u!222 &1525244364
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4750,7 +4750,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b01851fbf075740e18cbd6784af5bcc3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fdcb2d7d3a5d304381cc6fd27a777ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
