@@ -407,7 +407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: V0.72
+  m_Text: V0.73
 --- !u!222 &333142514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -756,7 +756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 171, y: 40}
+  m_AnchoredPosition: {x: 247, y: 40}
   m_SizeDelta: {x: 473.3, y: 63.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480513784
@@ -791,7 +791,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: JoinGo Company
+  m_Text: JesterSharp games company
 --- !u!222 &480513785
 CanvasRenderer:
   m_ObjectHideFlags: 0

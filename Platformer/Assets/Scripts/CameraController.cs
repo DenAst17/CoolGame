@@ -13,13 +13,12 @@ public class CameraController : MonoBehaviour {
     private void Awake()
     {
         if (!target) target = FindObjectOfType<Hero>().transform;
-        transform.position = new Vector3(target.position.x,target.position.y+0.5f,lensh);
+        transform.position = new Vector3(target.position.x,target.position.y+1f,lensh);
     }
 
     private void Update()
     {
-        
-        Vector3 poz = target.position; poz.z = lensh; poz.y += 0.2f; 
+        Vector3 poz = target.position; poz.z = lensh; poz.y += 1.2f; 
         speed = Vector3.Distance(transform.position, target.position)/2;
         transform.position = Vector3.Lerp(transform.position, poz, speed * Time.deltaTime);
     }

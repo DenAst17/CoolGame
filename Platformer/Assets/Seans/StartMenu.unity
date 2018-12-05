@@ -771,8 +771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.4998372, y: -44}
-  m_SizeDelta: {x: 980, y: 100}
+  m_AnchoredPosition: {x: 5, y: -64.85}
+  m_SizeDelta: {x: 830.5, y: 143.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768786167
 MonoBehaviour:
@@ -806,7 +806,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: First game - 2D Platformer
+  m_Text: 'Jim''s Adventures '
 --- !u!222 &768786168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1024,8 +1024,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -77}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_AnchoredPosition: {x: -30, y: -87}
+  m_SizeDelta: {x: 809.9, y: 133.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059876974
 MonoBehaviour:
@@ -1168,7 +1168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 304, y: -34}
+  m_AnchoredPosition: {x: 309, y: -73}
   m_SizeDelta: {x: 1182.3, y: 728.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1444160482
