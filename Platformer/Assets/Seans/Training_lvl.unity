@@ -21325,7 +21325,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 687941529}
-  m_Text: "Welcome to the 2D platformer\n             game \"CoolGame\""
+  m_Text: "Welcome to the 2D platformer\n      game \"Jim's Adventures\""
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

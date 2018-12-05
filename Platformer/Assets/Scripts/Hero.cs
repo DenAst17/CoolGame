@@ -49,7 +49,7 @@ public class Hero : MonoBehaviour {
     }
     private void Awake()
     {
-        
+
         set = Resources.Load("Pause") as GameObject;
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
@@ -81,7 +81,7 @@ public class Hero : MonoBehaviour {
             if (diley > -10) diley -= Time.deltaTime;
             if (diley < 0)
             {
-                if (Input.GetKey(KeyCode.Space) && bulletspeed < 25 && bullets > 0 ) { bulletspeed += 0.7f; }
+                if (Input.GetKey(KeyCode.Space) && bulletspeed < 25 && bullets > 0) { bulletspeed += 0.7f; }
                 if (Input.GetKey(KeyCode.Space) && angle < 45 && bullets > 0) { angle += 0.4f; };
                 if (Input.GetKeyUp(KeyCode.Space) && bullets > 0)
                 {
@@ -230,5 +230,9 @@ public class Hero : MonoBehaviour {
         {
             return true;
         }
+    }
+    public static void HaveImpulse(float n)
+    {
+        rb.AddForce(Vector2.up * n, ForceMode2D.Impulse);
     }
 }
