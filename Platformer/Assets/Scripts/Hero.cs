@@ -170,7 +170,7 @@ public class Hero : MonoBehaviour {
     }
     private void Shoot()
     {
-        Vector3 poz = transform.position; poz.y += 0.7f; poz.x += sp.flipX ? -0.5f : 0.7f;
+        Vector3 poz = transform.position; poz.y += 0.7f; poz.x += sp.flipX ? -0.5f : 0.7f;poz.z = 0;
         if (colorbutton == "blue")
         {
             Rigidbody2D clone = Instantiate(bulletblue, poz, transform.rotation) as Rigidbody2D;

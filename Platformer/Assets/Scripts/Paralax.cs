@@ -19,7 +19,7 @@ public class Paralax : MonoBehaviour {
     {
         go = this.gameObject;
         poz = Targetcamera.transform.position;
-        poz.z = leyer+10;
+        poz.z = leyer+2;
         poz1 = Targetcamera.transform.position.x;
         poz2 = Targetcamera.transform.position.x;
     }
