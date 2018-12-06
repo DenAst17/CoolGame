@@ -35,6 +35,8 @@ TagManager:
   - Blue
   - Green
   - Red
+  - Monster
+  - Kokol
   layers:
   - Default
   - TransparentFX
