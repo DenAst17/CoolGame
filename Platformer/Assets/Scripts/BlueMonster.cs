@@ -6,6 +6,7 @@ public class BlueMonster : MonoBehaviour {
     Animator an;
     Rigidbody2D rb;
     SpriteRenderer sp;
+    private int damage;
     private bool touch = true;
     private string dir = "Right";
     private float JumpImpuls = 35;
@@ -13,6 +14,27 @@ public class BlueMonster : MonoBehaviour {
     private float JumpImpulsel = 30;
     [SerializeField]
     private float JumpImpulser = 40;
+    private void Start()
+    {
+        switch (Global.difficulty)
+        {
+            case 1:
+                damage = 7;
+                break;
+            case 2:
+                damage = 9;
+                break;
+            case 3:
+                damage = 11;
+                break;
+            case 4:
+                damage = 13;
+                break;
+            case 5:
+                damage = 15;
+                break;
+        }
+    }
     private void Awake()
     {
         an = GetComponent<Animator>();
@@ -71,6 +93,19 @@ public class BlueMonster : MonoBehaviour {
                 if (dir == "Right") { dir = "Left"; }
                 if (dir == "Left") { dir = "Right"; }
             }
+        }
+        if (collision.gameObject.tag == "player")
+        {
+            Hero.HaveDamage(damage);
+            Hero.HaveImpulse(100);
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Monster")
+        {
+            if (dir == "Right") { dir = "Left"; }
+            if (dir == "Left") { dir = "Right"; }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -147,7 +182,7 @@ public class BlueMonster : MonoBehaviour {
     private bool Leftdown()
     {
         int j = 0;
-        Vector2 kol = transform.position; kol.x -= 2f; kol.y -= 1.5f;
+        Vector2 kol = transform.position; kol.x -= 2f; kol.y -= 1f;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(kol, 0.2f);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -168,7 +203,7 @@ public class BlueMonster : MonoBehaviour {
     private bool Rightdown()
     {
         int j = 0;
-        Vector2 kol = transform.position; kol.x += 2f; kol.y -= 1.5f;
+        Vector2 kol = transform.position; kol.x += 2f; kol.y -= 1f;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(kol, 0.2f);
         for (int i = 0; i < colliders.Length; i++)
         {

@@ -54,19 +54,19 @@ public class Spiky_green : MonoBehaviour
         switch (Global.difficulty)
         {
             case 1:
-                damage = 15;
-                break;
-            case 2:
                 damage = 20;
                 break;
-            case 3:
+            case 2:
                 damage = 25;
                 break;
-            case 4:
+            case 3:
                 damage = 30;
                 break;
-            case 5:
+            case 4:
                 damage = 35;
+                break;
+            case 5:
+                damage = 40;
                 break;
         }
         transform.position = point1;

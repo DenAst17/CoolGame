@@ -12,8 +12,6 @@ public class Horn : MonoBehaviour {
     private float hi = 0;
     [SerializeField]
     private int damage = 20;
-    [SerializeField]
-    public int difficulty = 2;
     public float timestan = 5;
     public float timem = 0;
     Animator an;
@@ -31,37 +29,34 @@ public class Horn : MonoBehaviour {
     }
     private void Start()
     {
-        difficulty = Global.difficulty;
         hi = UnityEngine.Random.Range(0, 360);
-        if (difficulty == 1)
+        switch(Global.difficulty)
         {
-            speed = 0.04f;
-            damage = 10;
-            timestan = 6;
-        }
-        else if (difficulty == 2)
-        {
-            speed = 0.045f;
-            damage = 15;
-            timestan = 4.5f;
-        }
-        else if (difficulty == 3)
-        {
-            speed = 0.05f;
-            damage = 20;
-            timestan = 4;
-        }
-        else if (difficulty == 4)
-        {
-            speed = 0.055f;
-            damage = 25;
-            timestan = 3;
-        }
-        else if (difficulty == 5)
-        {
-            speed = 0.06f;
-            damage = 30;
-            timestan = 2;
+            case 1:
+                speed = 0.04f;
+                damage = 10;
+                timestan = 6;
+                break;
+            case 2:
+                speed = 0.045f;
+                damage = 15;
+                timestan = 4.5f;
+                break;
+            case 3:
+                speed = 0.05f;
+                damage = 20;
+                timestan = 4;
+                break;
+            case 4:
+                speed = 0.055f;
+                damage = 25;
+                timestan = 3;
+                break;
+            case 5:
+                speed = 0.06f;
+                damage = 30;
+                timestan = 2;
+                break;
         }
     }
     private void Awake()
