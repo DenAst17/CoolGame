@@ -68,14 +68,14 @@ public class BlueMonster : MonoBehaviour {
             {
                 if (Rightup() == true || Rightdown() == false)
                 {
-                    dir = "Left";
+                    dir = "Right";
                 }
             }
             else
             {
                 if (Leftup() == true || Leftdown() == false)
                 {
-                    dir = "Right";
+                    dir = "Left";
                 }
             }
         }
