@@ -14216,12 +14216,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1669520781}
-  - component: {fileID: 1669520780}
   - component: {fileID: 1669520779}
   - component: {fileID: 1669520778}
+  - component: {fileID: 1669520780}
   m_Layer: 0
   m_Name: Cactus
-  m_TagString: Untagged
+  m_TagString: Solid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14292,8 +14292,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1669520780
-BoxCollider2D:
+--- !u!60 &1669520780
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -14314,9 +14314,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.5}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.26, y: 0.13499999}
+      - {x: 0.14999999, y: 0.225}
+      - {x: -0.14999999, y: 0.225}
+      - {x: -0.22999999, y: 0.205}
+      - {x: -0.35, y: 0.035}
+      - {x: -0.35, y: -0.065}
+      - {x: -0.29999998, y: -0.225}
+      - {x: 0.28, y: -0.225}
+      - {x: 0.35, y: -0.13499999}
+      - {x: 0.35, y: -0.074999996}
+      - {x: 0.31, y: 0.024999999}
 --- !u!4 &1669520781
 Transform:
   m_ObjectHideFlags: 0

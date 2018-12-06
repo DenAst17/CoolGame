@@ -112,18 +112,21 @@ public class BlueMonster : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Kokol")
         {
-            
             if (dir == "Right")
             {
-                dir = "Left"; JumpImpuls = Random.Range(JumpImpulsel, JumpImpulser);
-                rb.velocity = Vector2.zero;
-                rb.AddForce(new Vector2(1, 1) * JumpImpuls, ForceMode2D.Impulse);
-            }
-            if (dir == "Left")
-            {
-                dir = "Right"; JumpImpuls = Random.Range(JumpImpulsel, JumpImpulser);
+                dir = "Left";
+                JumpImpuls = Random.Range(JumpImpulsel, JumpImpulser);
                 rb.velocity = Vector2.zero;
                 rb.AddForce(new Vector2(-1, 1) * JumpImpuls, ForceMode2D.Impulse);
+                sp.flipX = !sp.flipX;
+            }
+            else if (dir == "Left")
+            {
+                dir = "Right";
+                JumpImpuls = Random.Range(JumpImpulsel, JumpImpulser);
+                rb.velocity = Vector2.zero;
+                rb.AddForce(new Vector2(1, 1) * JumpImpuls, ForceMode2D.Impulse);
+                sp.flipX = !sp.flipX;
             }
         }
     }
