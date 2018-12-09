@@ -31,7 +31,7 @@ public class Lvlmenubtns : MonoBehaviour {
     {
         if (Global.lvlsop[2] == true)
         {
-            SceneManager.LoadScene("Scene3");
+            SceneManager.LoadScene("Ch1_lvl3");
         }
         else
         {
@@ -43,7 +43,7 @@ public class Lvlmenubtns : MonoBehaviour {
     {
         if (Global.lvlsop[3] == true)
         {
-            SceneManager.LoadScene("Scene4");
+            SceneManager.LoadScene("Ch1_lvl4");
         }
         else
         {
