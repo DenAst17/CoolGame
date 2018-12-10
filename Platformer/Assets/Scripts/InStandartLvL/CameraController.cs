@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour {
 
     private void Update()
     {
-        Vector3 poz = target.position; poz.z = lensh; poz.y += 1.2f; 
+        Vector3 poz = target.position; poz.z = lensh; poz.y += 0.6f; 
         speed = Vector3.Distance(transform.position, target.position)/2;
         transform.position = Vector3.Lerp(transform.position, poz, speed * Time.deltaTime);
     }

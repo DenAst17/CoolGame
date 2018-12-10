@@ -37,6 +37,7 @@ TagManager:
   - Red
   - Monster
   - Kokol
+  - hug
   layers:
   - Default
   - TransparentFX

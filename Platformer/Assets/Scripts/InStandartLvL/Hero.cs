@@ -43,6 +43,7 @@ public class Hero : MonoBehaviour {
     private GameObject visual;
     private GameObject eventsystem;
     public static Animator anim;
+    private GameObject hug;
     SpriteRenderer sp;
     private void Start()
     {
@@ -67,6 +68,7 @@ public class Hero : MonoBehaviour {
     {
 
         set = Resources.Load("Pause") as GameObject;
+        hug = Resources.Load("Hug") as GameObject;
         canvas = Resources.Load("Canvas") as GameObject;
         camera = Resources.Load("Main Camera") as GameObject;
         visual = Resources.Load("Visual") as GameObject;
@@ -91,12 +93,14 @@ public class Hero : MonoBehaviour {
             {
                 Time.timeScale = 0;
                 Canvas ca = FindObjectOfType<Canvas>();
+                Instantiate(hug,ca.transform);
                 Instantiate(set, ca.transform);
             }
             else if (Input.GetKeyDown(KeyCode.Escape) && GameObject.FindGameObjectWithTag("Pause"))
             {
                 Time.timeScale = 1;
                 Destroy(GameObject.FindGameObjectWithTag("Pause"));
+                Destroy(GameObject.FindGameObjectWithTag("hug"));
             }
             if (diley > -10) diley -= Time.deltaTime;
             if (diley < 0)
