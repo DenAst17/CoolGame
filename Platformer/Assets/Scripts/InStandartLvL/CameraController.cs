@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     [SerializeField]
     private float speed = 2.0f;
     [SerializeField]
-    private Transform target;
+    public Transform target;
     [SerializeField]
     private float lensh = -10;
     private void Awake()

@@ -38,6 +38,10 @@ public class Hero : MonoBehaviour {
     public static float diley = 0;
     public static Transform tr;
     private GameObject set;
+    private GameObject canvas;
+    private GameObject camera;
+    private GameObject visual;
+    private GameObject eventsystem;
     public static Animator anim;
     SpriteRenderer sp;
     private void Start()
@@ -47,11 +51,26 @@ public class Hero : MonoBehaviour {
         damtaken = 0;
         buluse = 0;
         colorbutton = "blue";
+        if (!FindObjectOfType<Camera>()) {
+            GameObject clone1 = Instantiate(camera);
+            CameraController cc = clone1.GetComponent<CameraController>();
+            cc.target = this.transform;
+            GameObject clone2 = Instantiate(canvas);
+            Canvas cv = clone2.GetComponent<Canvas>();
+            cv.renderMode = RenderMode.ScreenSpaceCamera;
+            cv.worldCamera = clone1.GetComponent<Camera>();
+            Instantiate(visual);
+            Instantiate(eventsystem);
+        }
     }
     private void Awake()
     {
 
         set = Resources.Load("Pause") as GameObject;
+        canvas = Resources.Load("Canvas") as GameObject;
+        camera = Resources.Load("Main Camera") as GameObject;
+        visual = Resources.Load("Visual") as GameObject;
+        eventsystem = Resources.Load("EventSystem") as GameObject;
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
