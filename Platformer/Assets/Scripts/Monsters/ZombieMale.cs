@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieMale : MonoBehaviour {
+    private Hero hero;
+    [SerializeField]
+    private float h;
+    [SerializeField]
+    private float l;
+    [SerializeField]
+    Vector2 collpos;
     private Rigidbody2D rb;
     private SpriteRenderer sp;
     private Animator anim;
@@ -22,6 +29,7 @@ public class ZombieMale : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
+        hero = FindObjectOfType<Hero>();
     }
     private void Start()
     {
@@ -63,6 +71,65 @@ public class ZombieMale : MonoBehaviour {
     {
         if (Time.timeScale != 0)
         {
+            if (FastZombie && Triggered())
+            {
+                anim.speed = 2;
+                switch (Global.difficulty)
+                {
+                    case 1:
+                        speed = 0.04f;
+                        break;
+                    case 2:
+                        speed = 0.05f;
+                        break;
+                    case 3:
+                        speed = 0.06f;
+                        break;
+                    case 4:
+                        speed = 0.07f;
+                        break;
+                    case 5:
+                        speed = 0.08f;
+                        break;
+                    default:
+                        speed = 0.1f;
+                        break;
+                }
+                if (hero.transform.position.x < transform.position.x && !Leftdown())
+                {
+                    fi = "Left";
+                }
+                else if (!Rightdown())
+                {
+                    fi = "Right";
+                }
+            }
+            else
+            {
+                anim.speed = 1;
+                switch (Global.difficulty)
+                {
+                    case 1:
+                        speed = 0.025f;
+                        break;
+                    case 2:
+                        speed = 0.03f;
+                        break;
+                    case 3:
+                        speed = 0.035f;
+                        break;
+                    case 4:
+                        speed = 0.04f;
+                        break;
+                    case 5:
+                        speed = 0.045f;
+                        break;
+                    default:
+                        speed = 0.06f;
+                        break;
+                }
+            }
+
             if (hp <= 0) { dead = true; Global.monsterskill++; }
             if (!dead)
             {
@@ -85,14 +152,14 @@ public class ZombieMale : MonoBehaviour {
                 {
                     anim.SetInteger("State", 2);
                 }
-                if (fi == "Right")
+                if (fi == "Right" && !Triggered())
                 {
                     if (Rightup() == true || Rightdown() == false)
                     {
                         fi = "Left";
                     }
                 }
-                else
+                else if(!Triggered())
                 {
                     if (Leftup() == true || Leftdown() == false)
                     {
@@ -105,6 +172,18 @@ public class ZombieMale : MonoBehaviour {
                 anim.SetInteger("State", 3);
             }
         }
+    }
+    private bool Triggered()
+    {
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(collpos, new Vector2(l, h), 0);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject.tag == "player")
+            {
+                return true;
+            }
+        }
+        return false;
     }
     private bool Rightup()
     {
@@ -123,8 +202,17 @@ public class ZombieMale : MonoBehaviour {
                 k++;
             }
         }
-        if (k >= 1) { attack = true; } else { attack = false; }
-        k = 0;
+        if(!Triggered())
+        {
+            if (k >= 1)
+            {
+                attack = true;
+            }
+            else
+            {
+                attack = false;
+            }
+        }
         if (j > 0)
         {
             return true;
@@ -151,7 +239,17 @@ public class ZombieMale : MonoBehaviour {
                 k++;
             }
         }
-        if (k >= 1) { attack = true; } else { attack = false; }
+        if (!Triggered())
+        {
+            if (k >= 1)
+            {
+                attack = true;
+            }
+            else
+            {
+                attack = false;
+            }
+        }
         k = 0;
         if (j > 0)
         {
@@ -233,13 +331,5 @@ public class ZombieMale : MonoBehaviour {
                 GameObject.Destroy(collision.gameObject);
             }
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        
     }
 }
