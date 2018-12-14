@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Spiky_green : MonoBehaviour
 {
+    [SerializeField]
+    private bool Easter_lvl;
+
     private int damage;
     SpriteRenderer sp;
 
@@ -51,24 +54,27 @@ public class Spiky_green : MonoBehaviour
     }
     private void Start()
     {
-        switch (Global.difficulty)
-        {
-            case 1:
-                damage = 20;
-                break;
-            case 2:
-                damage = 25;
-                break;
-            case 3:
-                damage = 30;
-                break;
-            case 4:
-                damage = 35;
-                break;
-            case 5:
-                damage = 40;
-                break;
-        }
+        if (Easter_lvl)
+            damage = 100;
+        else
+            switch (Global.difficulty)
+            {
+                case 1:
+                    damage = 20;
+                    break;
+                case 2:
+                    damage = 25;
+                    break;
+                case 3:
+                    damage = 30;
+                    break;
+                case 4:
+                    damage = 35;
+                    break;
+                case 5:
+                    damage = 40;
+                    break;
+            }
         transform.position = point1;
         b = true;
     }
