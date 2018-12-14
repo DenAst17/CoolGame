@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Finish : MonoBehaviour {
     [SerializeField]
@@ -80,13 +81,18 @@ public class Finish : MonoBehaviour {
                 case 5: Bulletsused.text = "Bullets used: " + Hero.buluse + "/" + lp.StartBullets5; break;
                 default: break;
             }
+            int myInt1 = (int)Hero.damtaken;
+            int myInt2 = (int)Hero.heart;
+            score += Hero.coins * 3 + myInt2 * 5 - myInt1 * 2 + Hero.buluse * 3 + Hero.fields * 20 - (Global.respawns - LevelProporties.Srespawns)*3 + (Global.monsterskill - LevelProporties.Smonsterskills)*10 - (Global.jumps - LevelProporties.Sjumps)/10;
             Globalscore.text = "Global score: " + score;
+            int myInt3 = (int)lp.FinishHP;
+            int maxscore = LevelProporties.stcoins * 3 + myInt3 * 5 + LevelProporties.stbullets * 3 + (LevelProporties.stfields+lp.FieldsPlus) * 20 + LevelProporties.stmonsters*10 - LevelProporties.stjumps/10;
             star1.enabled = false;
             star2.enabled = false;
             star3.enabled = false;
-            if (Hero.heart <= 100) { star1.enabled = true; }
-            if (Hero.heart >= 50) { star2.enabled = true; }
-            if (Hero.heart >= 90) { star3.enabled = true; }
+            star1.enabled = true;
+            if (score >= maxscore/2) { star2.enabled = true; }
+            if (score >= (maxscore*9)/10) { star3.enabled = true; }
             Hero.anim.SetInteger("State", 0);
             Global.lvlsop[lp.ThisLevel] = true;
             Global.levelsfinished++;

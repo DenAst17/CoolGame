@@ -8,7 +8,7 @@ public class Hero : MonoBehaviour {
     public static float heart = 100f;
     public static float speed = 300.0f;
     public static bool win = false;
-    public static float damtaken = 0;
+    public static int damtaken = 0;
     public static int buluse = 0;
     [SerializeField]
     public float angle = 0f;
