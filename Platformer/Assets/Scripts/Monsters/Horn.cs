@@ -4,6 +4,8 @@ using System;
 using UnityEngine;
 
 public class Horn : MonoBehaviour {
+    [SerializeField]
+    private bool Easter_lvl;
     private SpriteRenderer sp;
     [SerializeField]
     private string fi = "Right";
@@ -23,14 +25,14 @@ public class Horn : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "bullet" && timem < 0)
         {
-            GameObject.Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
             timem = timestan;
         }
     }
     private void Start()
     {
         hi = UnityEngine.Random.Range(0, 360);
-        switch(Global.difficulty)
+        switch (Global.difficulty)
         {
             case 1:
                 speed = 0.04f;
@@ -58,6 +60,8 @@ public class Horn : MonoBehaviour {
                 timestan = 2;
                 break;
         }
+        if (Easter_lvl)
+            damage = 100;
     }
     private void Awake()
     {

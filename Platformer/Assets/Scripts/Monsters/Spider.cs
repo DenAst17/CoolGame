@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Spider : MonoBehaviour {
     [SerializeField]
-    private int damage = 20;
-    [SerializeField]
-    private float Impulse = 10;
-    private bool dir = true;
-    [SerializeField]
-    private float time = 0;
-    [SerializeField]
-    public int difficult = 2;
-    [SerializeField]
-    private float n = 8;
-    [SerializeField]
+    private bool Easter_lvl;
 
+    private int damage;
+    private float Impulse;
+    private bool dir = true;
+    private float time = 0;
+    public int difficult;
+    private float n = 8;
     private float m = 15;
     Rigidbody2D rb;
     private void Start()
@@ -46,6 +42,8 @@ public class Spider : MonoBehaviour {
             n = 2; m = 5; Impulse = 26;
             damage = 25;
         }
+        if (Easter_lvl)
+            damage = 100;
     }
     private void Awake()
     {
@@ -63,8 +61,6 @@ public class Spider : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "player")
-        {
-            Hero.HaveDamage(damage);
-        }
+                Hero.HaveDamage(damage);
     }
 }
