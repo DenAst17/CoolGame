@@ -5,6 +5,8 @@ using UnityEngine;
 public class Spiky_orange : MonoBehaviour
 {
     [SerializeField]
+    private int imp = 100;
+    [SerializeField]
     private bool Easter_lvl;
     private int damage;
     private void Awake()
@@ -36,7 +38,7 @@ public class Spiky_orange : MonoBehaviour
         if(collision.gameObject.tag == "player")
         {
             Hero.HaveDamage(damage);
-            Hero.HaveImpulse(100);
+            Hero.HaveImpulse(imp);
         }
     }
 }
