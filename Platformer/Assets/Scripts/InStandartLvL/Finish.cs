@@ -84,15 +84,15 @@ public class Finish : MonoBehaviour {
             int myInt1 = (int)Hero.damtaken;
             int myInt2 = (int)Hero.heart;
             score += Hero.coins * 3 + myInt2 * 5 - myInt1 * 2 + Hero.buluse * 3 + Hero.fields * 20 - (Global.respawns - LevelProporties.Srespawns)*3 + (Global.monsterskill - LevelProporties.Smonsterskills)*10 - (Global.jumps - LevelProporties.Sjumps)/10;
-            Globalscore.text = "Global score: " + score;
             int myInt3 = (int)lp.FinishHP;
             int maxscore = LevelProporties.stcoins * 3 + myInt3 * 5 + LevelProporties.stbullets * 3 + (LevelProporties.stfields+lp.FieldsPlus) * 20 + LevelProporties.stmonsters*10 - LevelProporties.stjumps/10;
             star1.enabled = false;
             star2.enabled = false;
             star3.enabled = false;
-            star1.enabled = true;
+            if (score > 0) { star1.enabled = true; }
             if (score >= maxscore/2) { star2.enabled = true; }
             if (score >= (maxscore*9)/10) { star3.enabled = true; }
+            Globalscore.text = "Global score: " + score + "/" + maxscore;
             Hero.anim.SetInteger("State", 0);
             Global.lvlsop[lp.ThisLevel] = true;
             Global.levelsfinished++;
