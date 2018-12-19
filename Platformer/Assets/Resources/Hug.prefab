@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114620186615149318}
   m_Layer: 5
   m_Name: Hug
-  m_TagString: Untagged
+  m_TagString: hug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
